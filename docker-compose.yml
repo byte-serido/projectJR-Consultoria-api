@@ -1,0 +1,9 @@
+version: "3"
+services:
+  projectJr:
+    container_name: projectJr
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: p4ssw0rd1234
