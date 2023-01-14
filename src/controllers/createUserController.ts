@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { CreateUser } from "../modules/createUser";
 import { PrismaClient} from "@prisma/client"
-export const prisma = new PrismaClient;
+import { generateToken } from "../config/generateToken";
 
-const express = require('express')
+export const prisma = new PrismaClient;
 
 export class CreateUserController{
     async handle(req: Request, res: Response){
@@ -16,11 +16,15 @@ export class CreateUserController{
 
             // Criando Usuario
             const create = new CreateUser();
-            const result = await create.execute({username,name,email,password,mod});
+            const user = await create.execute({username,name,email,password,mod});
 
             //Deixando a senha vazia para não retorna-la
-            result.password = "";
-            return res.send(result)
+            user.password = "";
+
+            return res.send({
+                user,
+                token: generateToken({id: user.id})
+            },);
             
         }catch (err){
             return res.status(400).send({error:"Registration failed"});
