@@ -5,5 +5,12 @@
       "strict": true,
       "lib": ["esnext"],
       "esModuleInterop": true
-    }
+    },
+
+    "typeRoots": [
+      "./src/@types",
+      "./custom_typings",
+      "./@types",
+      "./node_modules/@types",
+    ],
 }
