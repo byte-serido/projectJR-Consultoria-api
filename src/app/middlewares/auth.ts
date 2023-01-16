@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 const jwt = require("jsonwebtoken");
-const authConfig = require('../config/auth.json');
+const authConfig = require('../../config/auth.json');
 
 module.exports = (req:Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;

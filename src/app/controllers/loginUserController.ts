@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaClient} from "@prisma/client"
-import { generateToken } from "../config/generateToken";
+import { generateToken } from "../../config/generateToken";
 export const prisma = new PrismaClient;
 const bcrypt = require("bcrypt");
 
