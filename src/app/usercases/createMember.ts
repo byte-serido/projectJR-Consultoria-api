@@ -3,6 +3,7 @@ export const prisma = new PrismaClient();
 
 export interface typeMember{
     name: string,
+    registration: string,
     number: string,
     role: string,
     description: string,
@@ -10,10 +11,11 @@ export interface typeMember{
 }
 
 export class CreateMember{
-    async execute({name,number,role,description,imgUrl}:typeMember): Promise <Member>{
+    async execute({name,registration,number,role,description,imgUrl}:typeMember): Promise <Member>{
         const newMember = await prisma.member.create({
             data: {
                 name: name,
+                registration: registration,
                 number: number,
                 role: role,
                 description: description,
