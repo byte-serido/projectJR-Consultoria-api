@@ -31,3 +31,8 @@ Repositorio do projeto da Project Jr Consultoria, pra a ciração da api.
  
 ### Passo 8:
   > Depois rode no terminal o comando:**npm run studio**. Isto mostrará seu banco de dados com um layout do prisma, se não aparecer erro, estar tudo funcionando.
+
+## (Extra) Design das Telas:
+  > [Link do Figma para o Sistym map](https://www.figma.com/file/Bbdp9RVm98Iw7n5I3C2BVR/Sitemap?node-id=1%3A72&t=2YFGz694oPTMDUxf-0)
+  
+  > [Link do Figma para o Design](https://www.figma.com/file/LHRxkPUfmwKktFqpvKDcsu/Design%2FWireframes?node-id=1%3A2&t=HyuPFTLGeLQCo3qd-0)
