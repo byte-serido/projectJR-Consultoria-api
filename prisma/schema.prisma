@@ -27,11 +27,12 @@ model User{
 model Member{
   id String @id @default(uuid())
   name String 
-  number_job String
+  number String @unique
+  role String
   data_init DateTime @default(now())
   data_up DateTime @updatedAt
   description String
   imgUrl String
   
-  @@map("members")
+  @@map("member")
 }
