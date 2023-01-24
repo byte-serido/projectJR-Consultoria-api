@@ -30,4 +30,8 @@ model Member{
   number_job String
   data_init DateTime @default(now())
   data_up DateTime @updatedAt
+  description String
+  imgUrl String
+  
+  @@map("members")
 }
