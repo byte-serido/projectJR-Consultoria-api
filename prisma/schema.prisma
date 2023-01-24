@@ -27,7 +27,8 @@ model User{
 model Member{
   id String @id @default(uuid())
   name String 
-  number String @unique
+  registration String @unique
+  number String
   role String
   data_init DateTime @default(now())
   data_up DateTime @updatedAt
