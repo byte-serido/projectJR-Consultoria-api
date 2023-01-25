@@ -5,17 +5,23 @@ export const prisma = new PrismaClient();
 
 export class DeleteSolutionController {
     async handle(req: Request, res: Response) {
-        const {name} = req.body;
-        const solutions = await prisma.solution.deleteMany({ where: { name:name } })
 
-        if (!solutions) {
-            return res.status(400).send({error:"Solution not found"});
+        try {
+            const { name } = req.body;
+            const solutions = await prisma.solution.deleteMany({ where: { name: name } })
+
+            if (!solutions) {
+                return res.status(400).send({ error: "Solution not found" });
+            }
+
+            const getAllSolution = new GetAllSolution();
+            const result = await getAllSolution.execute()
+
+            return res.status(201).json(result);
+
+        } catch (err) {
+            return res.status(400).send({ error: "Registration failed" });
         }
-
-        const getAllSolution = new GetAllSolution();
-        const result = await getAllSolution.execute()
-        
-        return res.status(201).json(result);
 
     };
 }

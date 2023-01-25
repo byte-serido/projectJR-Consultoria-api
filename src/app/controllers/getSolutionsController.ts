@@ -4,10 +4,14 @@ import { GetAllSolution } from "../usercases/getAllSolutions";
 export class GetAllSolutionController {
 
     async handle(req: Request, res: Response) {
+        try {
+            const getAllSolution = new GetAllSolution();
+            const result = await getAllSolution.execute()
 
-        const getAllSolution = new GetAllSolution();
-        const result = await getAllSolution.execute()
-        
-        return res.status(201).json(result);
+            return res.status(201).json(result);
+
+        } catch (err) {
+            return res.status(400).send({ error: "Registration failed" });
+        }
     }
 }
