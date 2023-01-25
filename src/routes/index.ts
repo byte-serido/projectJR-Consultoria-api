@@ -6,6 +6,6 @@ const routes = Router();
 
 routes.use("/auth",authRoutes);
 routes.use("/projects",projectRoutes);
-routes.use("/memberRoutes",memberRoutes)
+routes.use("/member",memberRoutes)
 
 export {routes};
