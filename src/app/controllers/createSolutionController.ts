@@ -8,7 +8,7 @@ export class CreateSolutionController {
     async handle(req: Request, res: Response) {
 
         const { id, name, description, imgUrl } = req.body;
-        
+
         try {
             if (await prisma.solution.findUnique({ where: { name: name } })) {
                 return res.status(400).send({ error: "Solution already exists" })
@@ -21,8 +21,8 @@ export class CreateSolutionController {
                 solution
             },);
 
-        }   catch(err){
+        } catch (err) {
             return res.status(400).send(err);
-        }  
+        }
     };
 }

@@ -14,7 +14,7 @@ export class UpdateSolution {
         name,
         description,
         imgUrl,
-    }:typeSolution): Promise<Solution> {
+    }: typeSolution): Promise<Solution> {
         const upSolution = await prisma.solution.update({
             where: {
                 id: id,
@@ -26,7 +26,7 @@ export class UpdateSolution {
                 imgUrl: imgUrl,
             },
 
-            
+
         });
 
         return upSolution;
