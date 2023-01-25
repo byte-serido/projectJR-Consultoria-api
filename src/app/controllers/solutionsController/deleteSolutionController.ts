@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
-import { GetAllSolution } from "../usercases/getAllSolutions";
+import { GetAllSolution } from "../../usercases/solutionsUserCases/getAllSolutions";
 export const prisma = new PrismaClient();
 
 export class DeleteSolutionController {

@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { CreateSolutionController } from "../app/controllers/createSolutionController";
-import { GetAllSolutionController } from "../app/controllers/getSolutionsController";
-import { UpdateSolutionController } from "../app/controllers/updateSolutionController";
-import { DeleteSolutionController } from "../app/controllers/deleteSolutionController";
-import { GetOneSolutionController } from "../app/controllers/getOneSolutionController";
+import { CreateSolutionController } from "../app/controllers/solutionsController/createSolutionController";
+import { GetAllSolutionController } from "../app/controllers/solutionsController/getSolutionsController";
+import { UpdateSolutionController } from "../app/controllers/solutionsController/updateSolutionController";
+import { DeleteSolutionController } from "../app/controllers/solutionsController/deleteSolutionController";
+import { GetOneSolutionController } from "../app/controllers/solutionsController/getOneSolutionController";
 
 const createSolutionController = new CreateSolutionController();
 const getAllSolutionController = new GetAllSolutionController();
