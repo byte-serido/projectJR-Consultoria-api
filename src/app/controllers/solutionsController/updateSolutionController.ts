@@ -26,7 +26,7 @@ export class UpdateSolutionController {
             return res.status(400).send({ error: "Solution not exists" })
 
         } catch (err) {
-            return res.status(400).send(err);
+            return res.status(400).send({error:"Update failed"});
         }
     };
 }
