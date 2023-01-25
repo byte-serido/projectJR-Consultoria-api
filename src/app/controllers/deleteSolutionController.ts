@@ -8,9 +8,9 @@ export class DeleteSolutionController {
 
         try {
             const { name } = req.body;
-            const solutions = await prisma.solution.deleteMany({ where: { name: name } })
+            const solutionDel = await prisma.solution.deleteMany({ where: { name: name } })
 
-            if (!solutions) {
+            if (!solutionDel) {
                 return res.status(400).send({ error: "Solution not found" });
             }
 
@@ -20,7 +20,7 @@ export class DeleteSolutionController {
             return res.status(201).json(result);
 
         } catch (err) {
-            return res.status(400).send({ error: "Registration failed" });
+            return res.status(400).send(err);
         }
 
     };

@@ -11,7 +11,7 @@ export class GetAllSolutionController {
             return res.status(201).json(result);
 
         } catch (err) {
-            return res.status(400).send({ error: "Registration failed" });
+            return res.status(400).send(err);
         }
     }
 }
