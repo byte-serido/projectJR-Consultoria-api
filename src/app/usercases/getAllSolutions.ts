@@ -11,6 +11,7 @@ export class GetAllSolution {
         const listSolutions = await prisma.solution.findMany({
 
             select: {
+                id: true,
                 name: true,
                 description: true,
                 imgUrl: true,
