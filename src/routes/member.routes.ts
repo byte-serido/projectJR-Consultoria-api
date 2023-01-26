@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { CreateMemberController } from "../app/controllers/createMemberController";
-import { GetMembersController } from "../app/controllers/getMemberController";
-import { UpdateMemberController } from "../app/controllers/updateMemberController";
-import { DeletMemberController } from "../app/controllers/deleteMemberController";
+import { CreateMemberController } from "../app/controllers/memberControllers/createMemberController";
+import { GetMembersController } from "../app/controllers/memberControllers/getMemberController";
+import { UpdateMemberController } from "../app/controllers/memberControllers/updateMemberController";
+import { DeletMemberController } from "../app/controllers/memberControllers/deleteMemberController";
 
 const createMemberController = new CreateMemberController();
 const getMembersController = new GetMembersController();
