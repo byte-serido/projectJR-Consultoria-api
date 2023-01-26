@@ -7,6 +7,7 @@ export class GetMembers{
         const listMembers = await prisma.member.findMany({
 
             select:{
+                id: true,
                 name: true,
                 registration: true,
                 number: true,
