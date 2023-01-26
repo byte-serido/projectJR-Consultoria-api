@@ -26,7 +26,7 @@ export class GetOneSolutionController {
             return res.status(201).json(solutionOne);
 
         } catch (err) {
-            return res.status(400).send({error:"Solution with that name not found"});
+            return res.status(400).send({error:"Solução com esse nome não foi encontrada"});
             // The solution with that name does not exist
         }
     }

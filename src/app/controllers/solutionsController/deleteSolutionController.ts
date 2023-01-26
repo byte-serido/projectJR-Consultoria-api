@@ -11,7 +11,7 @@ export class DeleteSolutionController {
             const solutionDel = await prisma.solution.deleteMany({ where: { name: name } })
 
             if (!solutionDel) {
-                return res.status(400).send({ error: "Solution not found" });
+                return res.status(400).send({ error: "Solução Não Encontrada" });
             }
 
             const getAllSolution = new GetAllSolution();
@@ -20,7 +20,7 @@ export class DeleteSolutionController {
             return res.status(201).json(result);
 
         } catch (err) {
-            return res.status(400).send({error:"Delete failed"});
+            return res.status(400).send({error:"A Exclusão Falhou"});
         }
 
     };

@@ -23,10 +23,10 @@ export class UpdateSolutionController {
                 return res.send({ solution })
             }
 
-            return res.status(400).send({ error: "Solution not exists" })
+            return res.status(400).send({ error: "A Solução Não Existe" })
 
         } catch (err) {
-            return res.status(400).send({error:"Update failed"});
+            return res.status(400).send({error:"A Edição Falhou"});
         }
     };
 }

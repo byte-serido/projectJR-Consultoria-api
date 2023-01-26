@@ -11,7 +11,7 @@ export class CreateSolutionController {
 
         try {
             if (await prisma.solution.findUnique({ where: { name: name } })) {
-                return res.status(400).send({ error: "Solution already exists" })
+                return res.status(400).send({ error: "A Solução Já Existe" })
             }
 
             const create = new CreateSolution();
@@ -22,7 +22,7 @@ export class CreateSolutionController {
             },);
 
         } catch (err) {
-            return res.status(400).send({error:"Registration failed"});
+            return res.status(400).send({error:"O Cadastro Falhou"});
         }
     };
 }
