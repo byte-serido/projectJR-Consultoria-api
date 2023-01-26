@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { GetMembers } from "../usercases/getMembers";
+import { GetMembers } from "../../usercases/getMembers";
 
 export class GetMembersController{
     async handle(req: Request, res: Response){
