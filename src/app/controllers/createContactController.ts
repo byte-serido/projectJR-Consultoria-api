@@ -9,7 +9,7 @@ export class CreateContactController {
     const { email, nome, empresa, numero, proposta } = req.body;
 
     try {
-      if (await prisma.contact.findUnique({ where: { nome: nome } })) {
+      if (await prisma.contact.findUnique({ where: { email: email } })) {
         return res.status(400).send({ erro: "Contact already exists !" });
       }
 
