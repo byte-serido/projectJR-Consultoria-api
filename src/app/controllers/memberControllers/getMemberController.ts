@@ -6,10 +6,14 @@ export class GetMembersController{
         try{
             const getMembers = new GetMembers();
             const result = await getMembers.execute();
-    
+            
+            if(!Object.keys(result).length){
+                return res.status(400).json({error:"Não há membros cadastrados"});
+            }
+            
             return res.status(201).json(result);
         } catch(err){
-            return res.status(400).send({error:"Membros ainda não foram cadastrados"});
+            return res.status(400).send({error:"Não há membros cadastrados"});
         }
     }
 }
