@@ -24,7 +24,7 @@ model User{
   @@map("users")
 }
 
-model Contato {
+model Contact {
   id String @id @default(uuid())
   email String 
   nome String
