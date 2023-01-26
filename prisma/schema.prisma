@@ -23,3 +23,16 @@ model User{
 
   @@map("users")
 }
+
+model Contato {
+  id String @id @default(uuid())
+  email String 
+  nome String
+  empresa String
+  numero String
+  data_init DateTime @default(now())
+  data_up DateTime @updatedAt
+  proposta String
+
+  @@map("contacts")
+}
