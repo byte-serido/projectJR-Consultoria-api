@@ -9,7 +9,7 @@ export class CreateMemberController{
         const {name,registration,number,role,description,imgUrl} = req.body;
         try{
             if(await prisma.member.findUnique({where:{registration:registration}})){
-                return res.status(400).send({error:"Member already exists!"})
+                return res.status(400).send({error:"Membro já existente"})
             }
 
             const create = new CreateMember();
@@ -19,7 +19,7 @@ export class CreateMemberController{
                 member,
             },);
         } catch(err){
-            return res.status(400).send({error:"Registration failed"});
+            return res.status(400).send({error:"Falha no Registro de membro"});
         }
     };
 }
