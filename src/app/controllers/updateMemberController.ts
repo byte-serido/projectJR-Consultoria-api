@@ -21,7 +21,7 @@ export class UpdateMemberController{
             
             return res.status(400).send({error:"Este Membro não existe"});
         } catch(err){
-            return res.status(400).send({error:"Falha na atualização"});
+            return res.status(400).send({error:"Falha na atualização de Membro"});
         }
     };
 }

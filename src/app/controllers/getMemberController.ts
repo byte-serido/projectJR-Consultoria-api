@@ -3,9 +3,13 @@ import { GetMembers } from "../usercases/getMembers";
 
 export class GetMembersController{
     async handle(req: Request, res: Response){
-        const getMembers = new GetMembers();
-        const result = await getMembers.execute();
-
-        return res.status(201).json(result);
+        try{
+            const getMembers = new GetMembers();
+            const result = await getMembers.execute();
+    
+            return res.status(201).json(result);
+        } catch(err){
+            return res.status(400).send({error:"Membros ainda não foram cadastrados"});
+        }
     }
 }
