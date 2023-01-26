@@ -27,7 +27,7 @@ model User{
 model Contact {
   id String @id @default(uuid())
   email String 
-  nome String
+  nome String @unique
   empresa String
   numero String
   data_init DateTime @default(now())
