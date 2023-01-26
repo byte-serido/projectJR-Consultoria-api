@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
-import { CreateMember } from "../../usercases/createMember";
+import { CreateMember } from "../../usercases/memberUsercases/createMember";
 
 export const prisma = new PrismaClient;
 
