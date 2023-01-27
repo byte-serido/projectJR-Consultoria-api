@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
-import { GetAllSolution } from "../../usercases/solutionsUserCases/getAllSolutions";
 export const prisma = new PrismaClient();
 
 export class DeleteSolutionController {
@@ -8,16 +7,17 @@ export class DeleteSolutionController {
 
         try {
             const { name } = req.body;
-            const solutionDel = await prisma.solution.deleteMany({ where: { name: name } })
+            const solutionDel = await prisma.solution.delete({ where: { name: name } })
 
             if (!solutionDel) {
                 return res.status(400).send({ error: "Solução Não Encontrada" });
             }
 
-            const getAllSolution = new GetAllSolution();
-            const result = await getAllSolution.execute()
+            if (name == 0) {
+                return res.status(400).send({ error: "Solução Não Encontrada" });
+            }
 
-            return res.status(201).json(result);
+            return res.status(201).send({Success:"Solução Apagada"});
 
         } catch (err) {
             return res.status(400).send({error:"A Exclusão Falhou"});
