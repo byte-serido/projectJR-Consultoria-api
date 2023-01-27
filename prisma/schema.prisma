@@ -23,3 +23,12 @@ model User{
 
   @@map("users")
 }
+
+model Solution {
+  id String @id @default(uuid())
+  name String @unique
+  description String
+  imgUrl String
+
+  @@map("solutions")
+}
