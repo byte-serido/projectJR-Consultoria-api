@@ -14,22 +14,18 @@ export class UpdateSolutionController {
                 where: {
                     id: id
                 }
-            })) {
-
-                if (name == 0) {
-                    return res.status(400).send({ error: "Por favor, adicione um nome na solução" })    
-                }
+            })) { 
                 
                 const update = new UpdateSolution();
-                const solution = await update.execute({
+                await update.execute({
                     id, name, description, imgUrl
                 });
 
-                return res.send({ solution })
+                return res.send({sucess:"Solução alterada com sucesso!"})
             }
 
         } catch (err) {
-            return res.status(400).send({error:"A Edição Falhou"});
+            return res.status(400).send({error:"A Edição Falhou,"});
         }
     };
 }

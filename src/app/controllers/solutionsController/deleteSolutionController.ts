@@ -6,21 +6,13 @@ export class DeleteSolutionController {
     async handle(req: Request, res: Response) {
 
         try {
-            const { name } = req.body;
-            const solutionDel = await prisma.solution.delete({ where: { name: name } })
+            const { id } = req.body;
+            await prisma.solution.delete({ where: { id: id } });
 
-            if (!solutionDel) {
-                return res.status(400).send({ error: "Solução Não Encontrada" });
-            }
-
-            if (name == 0) {
-                return res.status(400).send({ error: "Solução Não Encontrada" });
-            }
-
-            return res.status(201).send({Success:"Solução Apagada"});
+            return res.status(201).send({success:"Solução apagada com sucesso!"});
 
         } catch (err) {
-            return res.status(400).send({error:"A Exclusão Falhou"});
+            return res.status(400).send({error:"A Exclusão Falhou, por favor tente novamente em alguns minutos!"});
         }
 
     };
