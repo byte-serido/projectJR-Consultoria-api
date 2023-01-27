@@ -24,6 +24,29 @@ model User{
   @@map("users")
 }
 
+model Solution {
+  id String @id @unique @default(uuid())
+  name String @unique
+  description String
+  imgUrl String
+
+  @@map("solutions")
+}
+
+model Member{
+  id String @id @unique @default(uuid())
+  name String 
+  registration String @unique
+  number String
+  role String
+  data_init DateTime @default(now())
+  data_up DateTime @updatedAt
+  description String
+  imgUrl String
+  
+  @@map("member")
+}
+
 model Contact {
   id String @id @default(uuid())
   email String @unique
@@ -36,3 +59,4 @@ model Contact {
 
   @@map("contacts")
 }
+
