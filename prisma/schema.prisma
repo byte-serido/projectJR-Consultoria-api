@@ -25,7 +25,7 @@ model User{
 }
 
 model Solution {
-  id String @id @default(uuid())
+  id String @id @unique @default(uuid())
   name String @unique
   description String
   imgUrl String
@@ -34,7 +34,7 @@ model Solution {
 }
 
 model Member{
-  id String @id @default(uuid())
+  id String @id @unique @default(uuid())
   name String 
   registration String @unique
   number String

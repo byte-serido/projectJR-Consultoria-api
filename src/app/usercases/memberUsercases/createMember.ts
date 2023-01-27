@@ -2,6 +2,7 @@ import { PrismaClient, Member } from "@prisma/client";
 export const prisma = new PrismaClient();
 
 export interface typeMember{
+    id:string,
     name: string,
     registration: string,
     number: string,

@@ -7,14 +7,14 @@ export class DeletMemberController{
     async handle(req: Request, res: Response){
         try{
 
-            if(!req.body.registration){
+            if(!req.body.id){
                 return res.status(400).send({error:"Falha na exclusão de Membro"})
             }
-            const {registration} = req.body;
+            const {id} = req.body;
             
             const delMember = await prisma.member.delete({
                 where:{
-                    registration:registration
+                    id:id,
                 },
             });
 
