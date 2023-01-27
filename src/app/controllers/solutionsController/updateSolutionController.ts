@@ -15,6 +15,11 @@ export class UpdateSolutionController {
                     id: id
                 }
             })) {
+
+                if (name == 0) {
+                    return res.status(400).send({ error: "Por favor, adicione um nome na solução" })    
+                }
+                
                 const update = new UpdateSolution();
                 const solution = await update.execute({
                     id, name, description, imgUrl
@@ -22,8 +27,6 @@ export class UpdateSolutionController {
 
                 return res.send({ solution })
             }
-
-            return res.status(400).send({ error: "A Solução Não Existe" })
 
         } catch (err) {
             return res.status(400).send({error:"A Edição Falhou"});
