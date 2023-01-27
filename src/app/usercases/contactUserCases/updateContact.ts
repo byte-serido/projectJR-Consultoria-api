@@ -11,7 +11,7 @@ export interface typeContact {
 }
 
 export class UpdateContact {
-  async excute({
+  async execute({
     id,
     email,
     nome,
