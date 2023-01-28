@@ -6,10 +6,10 @@ export const prisma = new PrismaClient();
 
 export class UpdateContactController {
   async handle(req: Request, res: Response) {
-    const { id, email, nome, empresa, numero, proposta } = req.body;
+    const { id, email, nome, empresa, numero, proposta } = req.params;
 
     try {
-      if (await prisma.contact.findMany({ where: { id: id } })) {
+      if (await prisma.contact.findUnique({ where: { id: id } })) {
         const update = new UpdateContact();
         const contact = await update.execute({
           id,
@@ -22,10 +22,12 @@ export class UpdateContactController {
 
         return res
           .status(200)
-          .send({ contact, sucess: "Contato alterado com sucesso !" });
+          .send({ sucess: "Contato alterado com sucesso !" });
       }
     } catch (error) {
-      return res.status(400).send({ error: `Contato com ${id} não existe !` });
+      return res
+        .status(400)
+        .send({ error: `Contato com id ${id} não existe !` });
     }
   }
 }
