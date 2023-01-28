@@ -6,7 +6,8 @@ export const prisma = new PrismaClient();
 
 export class UpdateContactController {
   async handle(req: Request, res: Response) {
-    const { id, email, nome, empresa, numero, proposta } = req.params;
+    const { id } = req.params;
+    const { email, nome, empresa, numero, proposta } = req.body;
 
     try {
       if (await prisma.contact.findUnique({ where: { id: id } })) {
@@ -22,7 +23,7 @@ export class UpdateContactController {
 
         return res
           .status(200)
-          .send({ sucess: "Contato alterado com sucesso !" });
+          .send({ contact, sucess: "Contato alterado com sucesso !" });
       }
     } catch (error) {
       return res
