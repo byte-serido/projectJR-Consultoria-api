@@ -10,21 +10,24 @@ export class UpdateContactController {
     const { email, nome, empresa, numero, proposta } = req.body;
 
     try {
-      if (await prisma.contact.findUnique({ where: { id: id } })) {
-        const update = new UpdateContact();
-        const contact = await update.execute({
-          id,
-          email,
-          nome,
-          empresa,
-          numero,
-          proposta,
-        });
-
+      if (!(await prisma.contact.findUnique({ where: { id: id } }))) {
         return res
-          .status(200)
-          .send({ contact, sucess: "Contato alterado com sucesso !" });
+          .status(400)
+          .send({ error: `Contato com id ${id} não encontrado` });
       }
+      const update = new UpdateContact();
+      const contact = await update.execute({
+        id,
+        email,
+        nome,
+        empresa,
+        numero,
+        proposta,
+      });
+
+      return res
+        .status(200)
+        .send({ contact, sucess: "Contato alterado com sucesso !" });
     } catch (error) {
       return res
         .status(400)
