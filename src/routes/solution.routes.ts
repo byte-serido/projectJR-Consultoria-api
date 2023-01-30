@@ -11,7 +11,7 @@ const deleteSolutionController = new DeleteSolutionController();
 const solutionRoutes = Router();
 
 solutionRoutes.post("/create", createSolutionController.handle);
-solutionRoutes.get("/getAll", getAllSolutionController.handle);
+solutionRoutes.get("/getall", getAllSolutionController.handle);
 solutionRoutes.put("/update", updateSolutionController.handle);
 solutionRoutes.delete("/delete", deleteSolutionController.handle);
 

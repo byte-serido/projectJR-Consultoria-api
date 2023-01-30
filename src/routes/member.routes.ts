@@ -11,8 +11,8 @@ const deletMemberController = new DeletMemberController();
 const memberRoutes = Router();
 
 memberRoutes.post("/create",createMemberController.handle);
-memberRoutes.get("/get",getMembersController.handle);
+memberRoutes.get("/getall",getMembersController.handle);
 memberRoutes.put("/update",updateMemberController.handle);
-memberRoutes.delete("/delet",deletMemberController.handle);
+memberRoutes.delete("/delete",deletMemberController.handle);
 
 export {memberRoutes};
