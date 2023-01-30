@@ -7,7 +7,7 @@ const createUserController = new CreateUserController();
 const loginUserController = new LoginUserController()
 const authRoutes = Router();
 
-authRoutes.post("/resgister", createUserController.handle);
+authRoutes.post("/register", createUserController.handle);
 authRoutes.post("/login", loginUserController.handle);
 
 
