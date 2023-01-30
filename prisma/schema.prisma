@@ -46,3 +46,17 @@ model Member{
   
   @@map("member")
 }
+
+model Contact {
+  id String @id @unique @default(uuid())
+  email String @unique
+  nome String 
+  empresa String
+  numero String
+  data_init DateTime @default(now())
+  data_up DateTime @updatedAt
+  proposta String
+
+  @@map("contacts")
+}
+
