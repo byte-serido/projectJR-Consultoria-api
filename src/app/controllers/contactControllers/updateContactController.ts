@@ -6,14 +6,13 @@ export const prisma = new PrismaClient();
 
 export class UpdateContactController {
   async handle(req: Request, res: Response) {
-    const { id } = req.params;
-    const { email, nome, empresa, numero, proposta } = req.body;
+    const { id, email, nome, empresa, numero, proposta } = req.body;
 
     try {
       if (!(await prisma.contact.findUnique({ where: { id: id } }))) {
         return res
           .status(400)
-          .send({ error: `Contato com id ${id} não encontrado` });
+          .send({ error: `Contato não encontrado` });
       }
       const update = new UpdateContact();
       const contact = await update.execute({
@@ -31,7 +30,7 @@ export class UpdateContactController {
     } catch (error) {
       return res
         .status(400)
-        .send({ error: `Contato com id ${id} não existe !` });
+        .send({ error: `Este contato não existe !` });
     }
   }
 }

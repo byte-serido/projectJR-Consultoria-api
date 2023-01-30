@@ -12,7 +12,7 @@ const contactRoutes = Router();
 
 contactRoutes.post("/create", createContactController.handle);
 contactRoutes.get("/getall", getAllContactsController.handle);
-contactRoutes.put("/update/:id", updateContactController.handle);
-contactRoutes.delete("/delete/:id", deleteContactController.handle);
+contactRoutes.put("/update", updateContactController.handle);
+contactRoutes.delete("/delete", deleteContactController.handle);
 
 export { contactRoutes };

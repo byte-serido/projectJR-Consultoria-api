@@ -6,16 +6,15 @@ export const prisma = new PrismaClient();
 
 export class DeleteContactController {
   async handle(req: Request, res: Response) {
-    const { id } = req.params;
-
+    const { id } = req.body;
     try {
       if (!(await prisma.contact.findUnique({ where: { id: id } }))) {
         return res
           .status(400)
-          .send({ error: `Contato com id ${id} não encontrado` });
+          .send({ error: `Contato não encontrado` });
       }
       const delContac = new DeleteContact();
-      const contactDeleted = await delContac.execute({ id });
+      await delContac.execute({ id });
 
       return res.status(200).send({
         sucess: "Contato deletado com sucesso !",
@@ -23,7 +22,7 @@ export class DeleteContactController {
     } catch (error) {
       return res
         .status(400)
-        .send({ error: `Erro ao deleter contato com id ${id} !` });
+        .send({ error: `Erro ao deleter contato!` });
     }
   }
 }
