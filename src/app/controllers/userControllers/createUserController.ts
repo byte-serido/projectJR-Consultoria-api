@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient} from "@prisma/client"
-import { generateToken } from "../../config/generateToken";
-import { CreateUser } from "../usercases/createUser";
+import { generateToken } from "../../../config/generateToken";
+import { CreateUser } from "../../usercases/userUserCases/createUser";
 
 
 export const prisma = new PrismaClient;
