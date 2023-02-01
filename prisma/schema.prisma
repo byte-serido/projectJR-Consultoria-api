@@ -61,21 +61,33 @@ model Contact {
 }
 
 model Post {
-  id String @id @unique @default(uuid())
-  title String
+  id String @id @default(uuid())
+  title String @unique
   description String
   autor String
   imgUrl String
   comments Json
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+  iterationOnPost IterationOnPost[] @relation("post")
 
   @@map("posts")
 }
 
-model commentsAux {
+model CommentAux {
   id String @id @unique @default(uuid())
   title String
+  iterationOnPost IterationOnPost[] @relation("commentAux")
 
-  @@map("comments")
+  @@map("commentsAux")
+}
+
+model IterationOnPost {
+  post Post @relation("post", fields: [postID], references: [id])
+  postID String
+  commentAux CommentAux @relation("commentAux", fields: [commentAuxID], references: [id])
+  commentAuxID String
+
+  @@id([postID, commentAuxID])
+  @@map("iteration on post")
 }
