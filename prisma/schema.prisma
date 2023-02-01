@@ -60,3 +60,22 @@ model Contact {
   @@map("contacts")
 }
 
+model Post {
+  id String @id @unique @default(uuid())
+  title String
+  description String
+  autor String
+  imgUrl String
+  comments Json
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("posts")
+}
+
+model commentsAux {
+  id String @id @unique @default(uuid())
+  title String
+
+  @@map("comments")
+}
