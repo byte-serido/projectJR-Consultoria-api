@@ -8,13 +8,19 @@ export class DeletePost {
 
         try {
 
-            const { id, iterationOnPost } = req.body;
+            const { id } = req.body;
+
+            await prisma.commentAux.deleteMany({
+                where: {
+                    posts: id,
+                },
+            },);
 
             await prisma.post.delete({
                 where: {
                     id: id
                 }
-            });
+            },);
 
             return res.status(201).send({
                 sucess: "Post foi apagado com sucesso!"
