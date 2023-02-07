@@ -36,3 +36,9 @@ Repositorio do projeto da Project Jr Consultoria, pra a ciração da api.
   > [Link do Figma para o Sistym map](https://www.figma.com/file/Bbdp9RVm98Iw7n5I3C2BVR/Sitemap?node-id=1%3A72&t=2YFGz694oPTMDUxf-0)
   
   > [Link do Figma para o Design](https://www.figma.com/file/LHRxkPUfmwKktFqpvKDcsu/Design%2FWireframes?node-id=1%3A2&t=HyuPFTLGeLQCo3qd-0)
+
+## Documentação
+
+| Nome        | Link                                         |
+|-------------|----------------------------------------------|
+|Documentação | [Clique aqui ➡️](docs/docuementoDeVisao.md) |
