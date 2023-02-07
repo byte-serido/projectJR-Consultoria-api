@@ -2,15 +2,15 @@
 
 ### Equipe e definição de Papéis:
 
-| Membro | Papel | Email |
-|--------|-------|-------|  
-| Project Jr | Cliente | |
-|Vinicius Maia | Desenvolvedor Back-end |viniciusmaiamarinho1@gmail.co|
-|Erick Bezerra |Desenvolvedor Front-end | erickbrtrindade@gmail.com |
-|Gabriel Lima |Desenvolvedor Front-end | gabriel.lima2307@uol.com.br
-|Flavio Roberto |Desenvolvedor Back-end | flavio@byteserido.com
-|Gabriel Azevedo|Desenvolvedor Front-end |gabrielazevedo492@gmail.com
-|Tallys Aureliano | Desenvolvedor Back-end | tallysdev@gmail.com
+| Membro           | Papel                   | Email                          |
+|------------------|-------------------------|--------------------------------|  
+| Project Jr       | Cliente                 |                                |
+| Vinicius Maia    | Desenvolvedor Back-end  | viniciusmaiamarinho1@gmail.com |
+| Erick Bezerra    | Desenvolvedor Front-end | erickbrtrindade@gmail.com      |
+| Gabriel Lima     | Desenvolvedor Front-end | gabriel.lima2307@uol.com.br    |
+| Flavio Roberto   | Desenvolvedor Back-end  | flavio@byteserido.com          |
+| Gabriel Azevedo  | Desenvolvedor Front-end | gabrielazevedo492@gmail.com    |
+| Tallys Aureliano | Desenvolvedor Back-end  | tallysdev@gmail.com            |
 
 <br>
 
