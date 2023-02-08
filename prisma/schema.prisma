@@ -68,16 +68,19 @@ model Post {
   imgUrl String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  iterationOnPost CommentAux[]
+  iterationOnPost Comment[]
 
   @@map("posts")
 }
 
-model CommentAux {
+model Comment {
   id String @id @unique @default(uuid())
-  title String
-  posts String
+  authorName String? 
+  text String
+  data_init DateTime @default(now())
+  data_up DateTime @updatedAt
   iteration Post @relation(fields: [posts], references: [id])
+  posts String
 
-  @@map("commentsAux")
+  @@map("comments")
 }
