@@ -60,3 +60,24 @@ model Contact {
   @@map("contacts")
 }
 
+model Post {
+  id String @id @unique @default(uuid())
+  title String @unique
+  description String
+  autor String
+  imgUrl String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  iterationOnPost CommentAux[]
+
+  @@map("posts")
+}
+
+model CommentAux {
+  id String @id @unique @default(uuid())
+  title String
+  posts String
+  iteration Post @relation(fields: [posts], references: [id])
+
+  @@map("commentsAux")
+}
