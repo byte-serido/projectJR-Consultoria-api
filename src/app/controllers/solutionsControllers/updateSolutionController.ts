@@ -11,10 +11,6 @@ export class UpdateSolutionController {
 
         try {
 
-            if (await prisma.solution.findUnique({ where: { name: name } })) {
-                return res.status(401).send({ error: "A Solução Já Existe" })
-            }
-
             if (await prisma.solution.findMany({
                 where: {
                     id: id
