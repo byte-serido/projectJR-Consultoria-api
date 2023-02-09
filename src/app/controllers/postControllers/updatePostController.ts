@@ -18,19 +18,27 @@ export class UpdatePost {
 
             })) {
 
+                
+
                 const UpdatePost = new UpadatePost();
                 await UpdatePost.execute({
                     id, title, description, autor, imgUrl
                 });
 
-                return res.send({ sucess: "Post foi atualizado com sucesso!" })
+                if (title == 0) {
+                    return res.status(409).send({
+                        error: "O post deve ter titulo"
+                    });
+                }
+
+                return res.status(201).send({ sucess: "Post foi atualizado com sucesso!" })
 
             }
 
         } catch (error) {
-            return res.status(400).send({
-                error: "Falha no update do post."
-            });
+            return res.status(400).send(
+                error
+            );
         }
     };
 
