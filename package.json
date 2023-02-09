@@ -2,9 +2,12 @@
   "name": "projectjr-consultoria",
   "version": "1.0.0",
   "description": "Repositorio do projeto da Project Jr Consultoria, pra a ciração do seu web site!",
+  "engines": {
+    "node": "18.12.1"
+  },
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
+    "start": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
     "docker": "docker-compose up",
     "migrate": "npx prisma migrate dev",
     "studio": "npx prisma studio",
