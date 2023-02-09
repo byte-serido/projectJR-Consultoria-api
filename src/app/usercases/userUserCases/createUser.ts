@@ -18,7 +18,7 @@ export class CreateUser {
     mod,
   }: typeUser): Promise<User> {
     //Criptografando a senha
-    const bcrypt = require("bcrypt");
+    const bcrypt = require("bcryptjs");
     const hash = await bcrypt.hash(password, 10);
     password = hash;
 
