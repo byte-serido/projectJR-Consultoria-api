@@ -15,7 +15,7 @@ export class DeleteCommentController {
       await delComment.execute({ id });
 
       return res.status(200).send({
-        sucess: "Comment delete successful!",
+        sucess: "Successfully deleted comment!",
       });
     } catch (error) {
       return res.status(400).send({ error: "Comment delete failed!" });
