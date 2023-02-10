@@ -1,6 +1,6 @@
 version: "3"
 services:
-  postgres:
+  projectJr:
     container_name: projectJr
     image: postgres:13
     ports:
