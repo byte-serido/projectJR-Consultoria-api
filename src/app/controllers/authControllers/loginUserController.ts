@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { PrismaClient} from "@prisma/client"
 import { generateToken } from "../../../config/generateToken";
 export const prisma = new PrismaClient;
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 export class LoginUserController{
     async handle(req: Request, res: Response){
