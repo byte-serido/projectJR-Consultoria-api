@@ -9,13 +9,13 @@ export class GetAllSolutionController {
             const result = await getAllSolution.execute()
 
             if (result.length == 0) {
-                return res.status(400).send({error:"Nenhuma solução cadastrada!"});
+                return res.status(403).send({ error: "Nenhuma solução cadastrada!" });
             }
 
             return res.status(201).json(result);
 
         } catch (err) {
-            return res.status(400).send({error:"Nenhuma solução cadastrada!"});
+            return res.status(400).send({ error: "Nenhuma solução cadastrada!" });
         }
     }
 }
