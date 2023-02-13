@@ -9,10 +9,10 @@ export class DeleteSolutionController {
             const { id } = req.body;
             await prisma.solution.delete({ where: { id: id } });
 
-            return res.status(201).send({success:"Solução apagada com sucesso!"});
+            return res.status(201).send({ success: "Solução apagada com sucesso!" });
 
         } catch (err) {
-            return res.status(400).send({error:"A Exclusão Falhou, por favor tente novamente em alguns minutos!"});
+            return res.status(400).send({ error: "A Exclusão Falhou, por favor tente novamente em alguns minutos!" });
         }
 
     };
