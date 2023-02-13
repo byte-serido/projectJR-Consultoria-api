@@ -11,13 +11,13 @@ export class CreatePostController {
         try {
 
             if (await prisma.post.findUnique({
-                where: {title: title}
+                where: { title: title }
             })) {
-                return res.status(400).send({error: "Já existe um post com esse nome."})
+                return res.status(405).send({ error: "Já existe um post com esse nome." })
             }
 
             if (title == 0 || autor == 0) {
-                return res.status(400).send({
+                return res.status(406).send({
                     error: "O post precisa obrigatoriamente de titulo e autor."
                 })
             }
@@ -27,11 +27,11 @@ export class CreatePostController {
                 title, description, autor, imgUrl
             });
 
-            return res.send({
+            return res.status(201).send({
                 post
             },);
         } catch (err) {
-            return res.status(400).send({error: "O Post não foi criado."})
+            return res.status(400).send({ error: "O Post não foi criado." })
         }
     }
 }
