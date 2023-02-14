@@ -27,7 +27,7 @@ export class DeletePost {
             });
 
         } catch (error) {
-            return res.status(400).send({error:"Não foi possível apagar esse post."});
+            return res.status(400).send({ error: "Não foi possível apagar esse post." });
         }
     }
 }

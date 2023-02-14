@@ -13,10 +13,10 @@ export class GetAllPostController {
             const result = await getAllPost.execute()
 
             if (result.length == 0) {
-                return res.status(400).send({ error: "Nenhum post criado" })
+                return res.status(407).send({ error: "Nenhum post criado" })
             }
 
-            return res.status(200).json(result);
+            return res.status(201).json(result);
 
         } catch (err) {
             return res.status(400).send({error: "Erro na amostragem de post"})
