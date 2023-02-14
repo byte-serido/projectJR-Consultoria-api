@@ -10,7 +10,7 @@ export class DeletePost {
 
             const { id } = req.body;
 
-            await prisma.commentAux.deleteMany({
+            await prisma.comment.deleteMany({
                 where: {
                     posts: id,
                 },
