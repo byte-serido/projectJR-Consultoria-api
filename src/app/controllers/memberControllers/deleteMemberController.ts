@@ -19,7 +19,7 @@ export class DeletMemberController{
             });
 
 
-            return res.status(201).send("Sucesso");
+            return res.status(200).send("Sucesso");
         } catch(err){
             return res.status(400).send({error:"Falha na exclusão de Membro"});
         }
