@@ -1,4 +1,4 @@
-import { CommentAux, Post, PrismaClient } from "@prisma/client";
+import { Post, PrismaClient } from "@prisma/client";
 
 export const prisma = new PrismaClient();
 
@@ -11,7 +11,7 @@ export class GetAllPost {
 
 
         const listPost = await prisma.post.findMany({
-            
+
             select: {
                 id: true,
                 title: true,
@@ -22,7 +22,10 @@ export class GetAllPost {
                 updated_at: true,
                 iterationOnPost: {
                     select: {
-                        title: true,
+                        authorName: true, 
+                        text: true,
+                        data_init: true,
+                        data_up: true,
                     },
                 },
             },
