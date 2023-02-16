@@ -12,6 +12,19 @@ export class CreateCommentController {
       if (!(await prisma.post.findUnique({ where: { id: posts } }))) {
         return res.status(400).send({ erro: "Post does not exists!" });
       }
+
+      if (!text && !authorName) {
+        return res
+          .status(400)
+          .send({ erro: "Insert a text comment and authorName!" });
+      }
+      if (!text) {
+        return res.status(400).send({ erro: "Insert a text comment !" });
+      }
+      if (!authorName) {
+        return res.status(400).send({ erro: "Insert a authorName !" });
+      }
+
       const create = new CreateComment();
       const comment = await create.execute({
         authorName,
