@@ -20,7 +20,7 @@
 | José Flávio      | Analista, javascript, dart, python, flutter,vue, django     |
 | Flavio Roberto   | Desenvolvedor, javascript, next                             |
 | Gabriel Azevedo  | Desenvolvedor, Javascript, React, Next, Vue                 |
-| Tallys Aureliano | Desenvolvedor, Typescript, Node, Python, Flutter, Java, Php |  
+| Tallys Aureliano | Desenvolvedor, Typescript, Javascript , Node, Python, Flutter, Java, Php |  
 | Vinicius         | Desenvolvedor, Javascript, Node, React, Python, Kotlin      |
 
 <br>
@@ -47,6 +47,7 @@ O sistema poderá ser utilizado por diversos usuários. Temos os seguintes perfi
 |RF004 - Manter cadastro de soluções.     | Uma solução tem : nome ,descrição, imgUrl.                                    | Administrador                   |
 |RF005 - Manter cadastro de usuário.      | Atributos: id, nome, matrícula, senha,email, numero, mod, data_init, data_up. | Administrador                   |
 |RF005 - Manter cadastro de contato.      | Atributos: email, nome, empresa, numero, data_init, data_up, proposta.        | Usuário                         |
+|RF006 - Manter cadastro de Depoimentos.  | Atributos: imgUrl, nome, id, depoimento, cargo e empresa. | Administrador     |
 
 <br>
 

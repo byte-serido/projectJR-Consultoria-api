@@ -7,6 +7,7 @@ import { memberRoutes } from "./member.routes";
 import { userRoutes } from "./user.routes";
 import { postRoutes } from "./post.routes";
 import { commentRoutes } from "./comment.routes";
+import { depoRoutes } from "./depo.routes";
 
 const routes = Router();
 
@@ -18,5 +19,6 @@ routes.use("/member", memberRoutes);
 routes.use("/contacts", contactRoutes);
 routes.use("/post", postRoutes);
 routes.use("/comment", commentRoutes);
+routes.use("/depositions", depoRoutes);
 
 export { routes };

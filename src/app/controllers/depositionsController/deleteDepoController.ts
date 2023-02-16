@@ -3,31 +3,27 @@ import { Request, Response } from "express";
 
 export const prisma = new PrismaClient();
 
-export class DeletePost {
+export class DeleteDepoController {
     async handle(req: Request, res: Response) {
 
         try {
 
             const { id } = req.body;
 
-            await prisma.commentAux.deleteMany({
+            await prisma.deposition.delete({
                 where: {
-                    posts: id,
+                    id: id,
                 },
             },);
 
-            await prisma.post.delete({
-                where: {
-                    id: id
-                }
-            },);
-
             return res.status(201).send({
-                sucess: "Post foi apagado com sucesso!"
+                sucess: "Depoimento Apagado com Sucesso!"
             });
 
         } catch (error) {
-            return res.status(400).send({ error: "Não foi possível apagar esse post." });
+            return res.status(400).send({
+                error: "Não foi possível apagar o depoimento!"
+            });
         }
     }
 }

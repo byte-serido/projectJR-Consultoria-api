@@ -10,22 +10,29 @@ export class UpdateSolutionController {
         const { id, name, description, imgUrl } = req.body;
 
         try {
+
             if (await prisma.solution.findMany({
                 where: {
                     id: id
                 }
-            })) { 
-                
+            })) {
+
                 const update = new UpdateSolution();
                 await update.execute({
                     id, name, description, imgUrl
                 });
 
-                return res.send({sucess:"Solução alterada com sucesso!"})
+                if (name == 0) {
+                    return res.status(409).send({
+                        error: "A solução deve ter titulo"
+                    });
+                }
+
+                return res.status(201).send({ sucess: "Solução alterada com sucesso!" })
             }
 
         } catch (err) {
-            return res.status(400).send({error:"A Edição Falhou,"});
+            return res.status(400).send({ error: "A Edição Falhou," });
         }
     };
 }

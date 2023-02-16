@@ -84,3 +84,15 @@ model Comment {
 
   @@map("comments")
 }
+
+model Deposition {
+
+  id String @id @unique @default(uuid())
+  name String
+  testimony String
+  office String
+  company String
+  imgUrl String
+
+  @@map("depositions")
+}
