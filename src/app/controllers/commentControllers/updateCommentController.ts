@@ -12,6 +12,18 @@ export class UpdateCommentController {
       if (!(await prisma.comment.findUnique({ where: { id: id } }))) {
         return res.status(400).send({ error: "Comment not foundt!" });
       }
+      if (!text && !authorName) {
+        return res
+          .status(400)
+          .send({ erro: "Insert a text comment and authorName!" });
+      }
+      if (!text) {
+        return res.status(400).send({ erro: "Insert a text comment !" });
+      }
+      if (!authorName) {
+        return res.status(400).send({ erro: "Insert a authorName !" });
+      }
+
       const update = new UpdateComment();
       const comment = await update.execute({
         id,
