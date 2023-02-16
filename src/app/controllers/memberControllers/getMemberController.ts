@@ -11,7 +11,7 @@ export class GetMembersController{
                 return res.status(400).json({error:"Não há membros cadastrados"});
             }
             
-            return res.status(201).json(result);
+            return res.status(200).json(result);
         } catch(err){
             return res.status(400).send({error:"Não há membros cadastrados"});
         }
