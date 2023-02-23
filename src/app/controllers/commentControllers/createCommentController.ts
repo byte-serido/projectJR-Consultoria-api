@@ -10,19 +10,19 @@ export class CreateCommentController {
 
     try {
       if (!(await prisma.post.findUnique({ where: { id: posts } }))) {
-        return res.status(400).send({ erro: "Post does not exists!" });
+        return res.status(400).send({ erro: "A postagem não existe!" });
       }
 
       if (!text && !authorName) {
         return res
           .status(400)
-          .send({ erro: "Insert a text comment and authorName!" });
+          .send({ erro: "Insira um comentário de texto e autor" });
       }
       if (!text) {
-        return res.status(400).send({ erro: "Insert a text comment !" });
+        return res.status(400).send({ erro: "Insira um comentário do texto!" });
       }
       if (!authorName) {
-        return res.status(400).send({ erro: "Insert a authorName !" });
+        return res.status(400).send({ erro: "Insira o nome do autor!" });
       }
 
       const create = new CreateComment();
@@ -36,7 +36,7 @@ export class CreateCommentController {
         comment,
       });
     } catch (error) {
-      return res.status(400).send({ error: "Comment failed !" });
+      return res.status(400).send({ error: "Não foi possivel realizar comentário!" });
     }
   }
 }

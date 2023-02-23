@@ -11,12 +11,12 @@ export class GetAllCommentsController {
       const result = await getAllComments.execute();
 
       if (!result) {
-        return res.status(400).send({ error: "Commests does not exists !" });
+        return res.status(400).send({ error: "Comentario não existe!" });
       }
 
       return res.status(200).json(result);
     } catch (error) {
-      return res.status(400).send({ error: "Comments failed" });
+      return res.status(400).send({ error: "Falha nos comentários." });
     }
   }
 }

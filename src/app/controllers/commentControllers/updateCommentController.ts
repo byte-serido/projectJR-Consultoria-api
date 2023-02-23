@@ -10,18 +10,18 @@ export class UpdateCommentController {
 
     try {
       if (!(await prisma.comment.findUnique({ where: { id: id } }))) {
-        return res.status(400).send({ error: "Comment not foundt!" });
+        return res.status(400).send({ error: "Comando não encontrado!" });
       }
       if (!text && !authorName) {
         return res
           .status(400)
-          .send({ erro: "Insert a text comment and authorName!" });
+          .send({ erro: "Insira um comentário de texto e o nome do autor!" });
       }
       if (!text) {
-        return res.status(400).send({ erro: "Insert a text comment !" });
+        return res.status(400).send({ erro: "Insira um comentário do texto!" });
       }
       if (!authorName) {
-        return res.status(400).send({ erro: "Insert a authorName !" });
+        return res.status(400).send({ erro: "Insira um nome do autor!" });
       }
 
       const update = new UpdateComment();
@@ -34,9 +34,9 @@ export class UpdateCommentController {
 
       return res
         .status(200)
-        .send({ comment, sucess: "Comment update successful!" });
+        .send({ comment, sucess: "Atualização de comentário realizada com sucesso!" });
     } catch (error) {
-      return res.status(400).send({ error: "Comment update failed!" });
+      return res.status(400).send({ error: "A atualização do comentário falhou!" });
     }
   }
 }

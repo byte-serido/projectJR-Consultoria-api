@@ -9,16 +9,16 @@ export class DeleteCommentController {
     const { id } = req.body;
     try {
       if (!(await prisma.comment.findUnique({ where: { id: id } }))) {
-        return res.status(400).send({ error: "Comment not foundt!" });
+        return res.status(400).send({ error: "Comando não encontrado!" });
       }
       const delComment = new DeleteComment();
       await delComment.execute({ id });
 
       return res.status(200).send({
-        sucess: "Successfully deleted comment!",
+        sucess: "Comentário excluído com sucesso!",
       });
     } catch (error) {
-      return res.status(400).send({ error: "Comment delete failed!" });
+      return res.status(400).send({ error: "A exclusão do comentário falhou!" });
     }
   }
 }
