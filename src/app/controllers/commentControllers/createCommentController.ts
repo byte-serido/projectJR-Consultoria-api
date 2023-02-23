@@ -32,7 +32,7 @@ export class CreateCommentController {
         posts,
       });
 
-      return res.send({
+      return res.status(200).send({
         comment,
       });
     } catch (error) {
