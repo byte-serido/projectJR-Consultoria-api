@@ -19,7 +19,7 @@ export class GetAllPostController {
             return res.status(201).json(result);
 
         } catch (err) {
-            return res.status(400).send({ error: "Erro na busca por posts." })
+            return res.status(400).send({error: "Erro na amostragem de post"})
         }
     }
 }
