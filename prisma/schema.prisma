@@ -85,7 +85,7 @@ model Comment {
   @@map("comments")
 }
 
-model Deposition {
+model Depoiments {
 
   id String @id @unique @default(uuid())
   name String
@@ -94,5 +94,5 @@ model Deposition {
   company String
   imgUrl String
 
-  @@map("depositions")
+  @@map("depoiments")
 }
