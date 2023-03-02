@@ -19,6 +19,6 @@ routes.use("/member", memberRoutes);
 routes.use("/contacts", contactRoutes);
 routes.use("/post", postRoutes);
 routes.use("/comment", commentRoutes);
-routes.use("/depositions", depoRoutes);
+routes.use("/depoiments", depoRoutes);
 
 export { routes };
