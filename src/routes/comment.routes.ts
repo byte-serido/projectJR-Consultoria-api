@@ -12,7 +12,7 @@ const updateComment = new UpdateCommentController();
 const deleteComment = new DeleteCommentController();
 
 commentRoutes.post("/create", createComment.handle);
-commentRoutes.get("/getAll", getAllComments.handle);
+commentRoutes.get("/getall", getAllComments.handle);
 commentRoutes.put("/update", updateComment.handle);
 commentRoutes.delete("/delete", deleteComment.handle);
 

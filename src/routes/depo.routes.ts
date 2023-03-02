@@ -12,7 +12,7 @@ const upDepo = new UpdateDepos();
 const deleteDepo = new DeleteDepoController();
 
 depoRoutes.post("/create", createDepo.handle);
-depoRoutes.get("/getAll", getAllDepo.handle);
+depoRoutes.get("/getall", getAllDepo.handle);
 depoRoutes.put("/update", upDepo.handle);
 depoRoutes.delete("/delete", deleteDepo.handle);
 

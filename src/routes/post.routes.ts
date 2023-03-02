@@ -12,7 +12,7 @@ const updatePost = new UpdatePost();
 const deletePost = new DeletePost();
 
 postRoutes.post("/create", createPost.handle);
-postRoutes.get("/getAll", getAllPost.handle);
+postRoutes.get("/getall", getAllPost.handle);
 postRoutes.put("/update", updatePost.handle);
 postRoutes.delete("/delete", deletePost.handle);
 
