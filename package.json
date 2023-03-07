@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
+    "start": "npx prisma generate && ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
     "docker": "docker-compose up",
     "migrate": "npx prisma migrate dev",
     "studio": "npx prisma studio",

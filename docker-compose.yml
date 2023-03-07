@@ -8,6 +8,10 @@ services:
       - .:/usr/app
     depends_on:
       - db
+    command: >
+      sh -c  "npx prisma generate
+              npx prisma migrate dev
+              npm run start"
 
   db:
     container_name: db_byte
