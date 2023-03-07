@@ -1,7 +1,7 @@
 version: "3"
 services:
-  projectJr:
-    container_name: projectJr
+  db:
+    container_name: db_byte
     image: postgres:13
     ports:
       - "5432:5432"
