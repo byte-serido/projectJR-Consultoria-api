@@ -15,7 +15,7 @@ Repositorio do projeto da Project Jr Consultoria, pra a ciração da api.
   > Crie o arquivo **.env** na raiz do projeto para fazer a conexão com o banco de dados.
   
 ### Passo 3:
-  > Para conectar com o banco de dados escreva isto no arquivo **.env**: *DATABASE_URL="postgresql://postgres:p4ssw0rd1234@localhost:5432/mydb?schema=public"*
+  > Para conectar com o banco de dados escreva isto no arquivo **.env**: *DATABASE_URL="postgresql://postgres:[password]@localhost:5432/[container_name]"*
   
 ### Passo 4:
   > Ative seu docker desktop na sua maquina e depois execute este comando no terminal: **npm run docker**. Isto fara o docker criar o banco de dados postgresql.

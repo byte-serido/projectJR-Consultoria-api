@@ -12,7 +12,7 @@ services:
       sh -c  "npx prisma generate
               npx prisma migrate dev
               npm run start"
-
+              
   db:
     container_name: db_byte
     image: postgres:13
