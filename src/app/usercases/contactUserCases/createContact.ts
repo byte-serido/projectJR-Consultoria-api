@@ -1,7 +1,7 @@
 import { PrismaClient, Contact } from "@prisma/client";
 export const prisma = new PrismaClient();
 
-export interface typeContact {
+interface typeContact {
   email: string;
   nome: string;
   empresa: string;

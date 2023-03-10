@@ -1,8 +1,7 @@
 import { PrismaClient, User } from "@prisma/client";
 
 export const prisma = new PrismaClient();
-
-export interface typeUser {
+interface typeUser {
   id: string;
   username:string;
   password:string;
@@ -22,7 +21,7 @@ export class UpdateUser {
   }: typeUser): Promise<User> {
     
     //Criptografando a senha
-    const bcrypt = require("bcrypt");
+    const bcrypt = require("bcryptjs");
     const hash = await bcrypt.hash(password, 10);
     password = hash;
 

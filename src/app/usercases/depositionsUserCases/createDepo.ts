@@ -3,8 +3,7 @@ import { Deposition, PrismaClient } from "@prisma/client";
 
 export const prisma = new PrismaClient();
 
-export interface typeDepo {
-
+interface typeDepo {
     name: string;
     testimony: string;
     office: string;

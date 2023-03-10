@@ -2,7 +2,7 @@ import { PrismaClient, Comment } from "@prisma/client";
 
 export const prisma = new PrismaClient();
 
-export interface typeComment {
+interface typeComment {
   authorName: string;
   text: string;
   posts: string;

@@ -1,7 +1,7 @@
 import { PrismaClient, Solution } from "@prisma/client";
 export const prisma = new PrismaClient();
 
-export interface typeSolution {
+interface typeSolution {
     id: string;
     name: string;
     description: string;

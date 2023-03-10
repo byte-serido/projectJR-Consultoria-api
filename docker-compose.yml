@@ -1,23 +1,10 @@
 version: "3.8"
-services:
-  app: 
-    build: .
-    ports:
-     - "3000:3000"
-    volumes:
-      - .:/usr/app
-    depends_on:
-      - db
-    command: >
-      sh -c  "npx prisma generate
-              npx prisma migrate dev
-              npm run start"
-              
-  db:
-    container_name: db_byte
+services:     
+  db_projectjr:
+    container_name: db_projectjr
     image: postgres:13
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: p4ssw0rd1234 
+      POSTGRES_PASSWORD: p4ssw0rd
       

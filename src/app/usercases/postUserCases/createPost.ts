@@ -2,7 +2,7 @@ import { Post, PrismaClient } from "@prisma/client";
 
 export const prisma = new PrismaClient();
 
-export interface typePost {
+interface typePost {
 
     title: string;
     description: string;
