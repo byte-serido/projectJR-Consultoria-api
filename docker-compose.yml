@@ -7,4 +7,7 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: p4ssw0rd
-      
+
+
+#  sudo service docker start
+#  sudo service docker status
