@@ -8,9 +8,13 @@ import { userRoutes } from "./user.routes";
 import { postRoutes } from "./post.routes";
 import { commentRoutes } from "./comment.routes";
 import { depoRoutes } from "./depo.routes";
+import { Request, Response } from "express";
 
 const routes = Router();
 
+routes.get("/",(req:Request, res:Response) => {
+        return res.status(200).send({success:"Server ON and Connect!"});
+});
 routes.use("/auth", authRoutes);
 routes.use("/user", userRoutes);
 routes.use("/projects", projectRoutes);
