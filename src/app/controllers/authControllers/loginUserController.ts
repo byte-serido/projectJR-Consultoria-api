@@ -11,7 +11,7 @@ export class LoginUserController{
         
         //confirmando se o username existe
         if(!user)
-            return res.status(400).send({error:"User not found"});
+            return res.status(401).send({error:"User not found"});
 
         //comparando as senhas
         if(!await bcrypt.compare(password, user.password))
