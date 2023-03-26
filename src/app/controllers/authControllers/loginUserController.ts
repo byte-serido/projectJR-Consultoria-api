@@ -20,7 +20,7 @@ export class LoginUserController{
         //Deixando senha vazia pra ninguem ver
         user.password = "";
 
-        res.send({ 
+        return res.status(201).send({ 
             user, 
             token: generateToken({id: user.id})
         });
