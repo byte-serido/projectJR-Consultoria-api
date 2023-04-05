@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { UpdateSolution } from "../../usercases/solutionsUserCases/updateSolution";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
@@ -22,17 +23,17 @@ export class UpdateSolutionController {
                     id, name, description, imgUrl
                 });
 
-                if (name == 0) {
-                    return res.status(409).send({
+                if (!name) {
+                    return res.status(StatusCodes.UNAUTHORIZED).send({
                         error: "A solução deve ter titulo"
                     });
                 }
 
-                return res.status(201).send({ sucess: "Solução alterada com sucesso!" })
+                return res.status(StatusCodes.CREATED).send({ sucess: "Solução alterada com sucesso!" })
             }
 
         } catch (err) {
-            return res.status(400).send({ error: "A Edição Falhou," });
+            return res.status(StatusCodes.BAD_REQUEST).send({ error: "A Edição Falhou," });
         }
     };
 }

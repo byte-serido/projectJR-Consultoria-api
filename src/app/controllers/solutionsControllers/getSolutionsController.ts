@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { GetAllSolution } from "../../usercases/solutionsUserCases/getAllSolutions";
+import { StatusCodes } from "http-status-codes";
 
 export class GetAllSolutionController {
 
@@ -8,14 +9,14 @@ export class GetAllSolutionController {
             const getAllSolution = new GetAllSolution();
             const result = await getAllSolution.execute()
 
-            if (result.length == 0) {
-                return res.status(403).send({ error: "Nenhuma solução cadastrada!" });
+            if (!result) {
+                return res.status(StatusCodes.PAYMENT_REQUIRED).send({ error: "Nenhuma solução cadastrada!" });
             }
 
-            return res.status(201).json(result);
+            return res.status(StatusCodes.OK).json(result);
 
         } catch (err) {
-            return res.status(400).send({ error: "Nenhuma solução cadastrada!" });
+            return res.status(StatusCodes.BAD_REQUEST).send({ error: "Erro na busca por soluções" });
         }
     }
 }
