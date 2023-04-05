@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 import { CreatePost } from "../../usercases/postUserCases/createPost";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient;
 
@@ -13,11 +14,11 @@ export class CreatePostController {
             if (await prisma.post.findUnique({
                 where: { title: title }
             })) {
-                return res.status(405).send({ error: "Já existe um post com esse nome." })
+                return res.status(StatusCodes.UNAUTHORIZED).send({ error: "Já existe um post com esse nome." })
             }
 
-            if (title == 0 || autor == 0) {
-                return res.status(406).send({
+            if (!title || !autor) {
+                return res.status(StatusCodes.UNAUTHORIZED).send({
                     error: "O post precisa obrigatoriamente de titulo e autor."
                 })
             }
@@ -27,11 +28,11 @@ export class CreatePostController {
                 title, description, autor, imgUrl
             });
 
-            return res.status(201).send({
+            return res.status(StatusCodes.CREATED).send({
                 post
             },);
         } catch (err) {
-            return res.status(400).send({ error: "O Post não foi criado." })
+            return res.status(StatusCodes.BAD_REQUEST).send({ error: "O Post não foi criado." })
         }
     }
 }
