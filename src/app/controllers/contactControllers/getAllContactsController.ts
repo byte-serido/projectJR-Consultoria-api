@@ -13,7 +13,7 @@ export class GetAllContactsController {
 
       if (!result) {
         return res
-          .status(StatusCodes.UNAUTHORIZED)
+          .status(StatusCodes.PAYMENT_REQUIRED)
           .send({ error: "Não existe contatos cadastrados" });
       }
 
