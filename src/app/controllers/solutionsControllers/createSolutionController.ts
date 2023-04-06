@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 import { CreateSolution } from "../../usercases/solutionsUserCases/createSolution";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient;
 
@@ -11,11 +12,11 @@ export class CreateSolutionController {
 
         try {
             if (await prisma.solution.findUnique({ where: { name: name } })) {
-                return res.status(401).send({ error: "A Solução Já Existe" })
+                return res.status(StatusCodes.UNAUTHORIZED).send({ error: "A Solução Já Existe" })
             }
 
-            if (name == 0) {
-                return res.status(402).send({ error: "Por favor adicione um nome na solução" })
+            if (!name) {
+                return res.status(StatusCodes.UNAUTHORIZED).send({ error: "Por favor adicione um nome na solução" })
             }
 
             const create = new CreateSolution();
@@ -26,7 +27,7 @@ export class CreateSolutionController {
             },);
 
         } catch (err) {
-            return res.status(400).send({ error: "O Cadastro Falhou" });
+            return res.status(StatusCodes.BAD_REQUEST).send({ error: "O Cadastro Falhou" });
         }
     };
 }

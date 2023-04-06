@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
@@ -22,12 +23,12 @@ export class DeletePost {
                 }
             },);
 
-            return res.status(201).send({
+            return res.status(StatusCodes.CREATED).send({
                 sucess: "Post foi apagado com sucesso!"
             });
 
         } catch (error) {
-            return res.status(400).send({ error: "Não foi possível apagar esse post." });
+            return res.status(StatusCodes.BAD_REQUEST).send({ error: "Não foi possível apagar esse post." });
         }
     }
 }

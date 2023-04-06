@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma= new PrismaClient();
 
@@ -8,7 +9,7 @@ export class DeletMemberController{
         try{
 
             if(!req.body.id){
-                return res.status(400).send({error:"Falha na exclusão de Membro"})
+                return res.status(StatusCodes.BAD_REQUEST).send({error:"Falha na exclusão de Membro"})
             }
             const {id} = req.body;
             
@@ -19,9 +20,9 @@ export class DeletMemberController{
             });
 
 
-            return res.status(200).send("Sucesso");
+            return res.status(StatusCodes.CREATED).send("Sucesso");
         } catch(err){
-            return res.status(400).send({error:"Falha na exclusão de Membro"});
+            return res.status(StatusCodes.NOT_FOUND).send({error:"Falha na exclusão de Membro"});
         }
         
     };

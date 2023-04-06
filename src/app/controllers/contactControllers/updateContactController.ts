@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { UpdateContact } from "../../usercases/contactUserCases/updateContact";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
@@ -11,7 +12,7 @@ export class UpdateContactController {
     try {
       if (!(await prisma.contact.findUnique({ where: { id: id } }))) {
         return res
-          .status(400)
+          .status(StatusCodes.BAD_REQUEST)
           .send({ error: `Contato não encontrado` });
       }
       const update = new UpdateContact();
@@ -25,7 +26,7 @@ export class UpdateContactController {
       });
 
       return res
-        .status(200)
+        .status(StatusCodes.OK)
         .send({ contact, sucess: "Contato alterado com sucesso !" });
     } catch (error) {
       return res

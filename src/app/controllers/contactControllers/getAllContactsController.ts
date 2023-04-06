@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { GetAllContacts } from "../../usercases/contactUserCases/getAllContacts";
+import {StatusCodes} from "http-status-codes"
 
 export const prisma = new PrismaClient();
 
@@ -12,11 +13,11 @@ export class GetAllContactsController {
 
       if (!result) {
         return res
-          .status(400)
+          .status(StatusCodes.PAYMENT_REQUIRED)
           .send({ error: "Não existe contatos cadastrados" });
       }
 
-      return res.status(200).json(result);
+      return res.status(StatusCodes.OK).json(result);
     } catch (error) {
       return res.status(400).send({ error: "Não existe contatos cadastrados" });
     }
