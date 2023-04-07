@@ -9,7 +9,7 @@ export const prisma = new PrismaClient();
  *
  *  Ela busca e deleta uma postagem.
  *
- *  Se correu tudo bem retorna o depoimento e status:
+ *  Se correu tudo bem retorna o status:
  *  CREATED = 201
  *
  *  Se ocorreu algum erro no processo retorna status:
