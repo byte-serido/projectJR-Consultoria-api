@@ -4,6 +4,16 @@ import { DeleteComment } from "../../usercases/commentUserCases/deleteComment";
 
 export const prisma = new PrismaClient();
 
+/**
+ *  Essa é a classe controller do DeleteComment
+ *
+ *  Antes de deletar um comentário, ela testa se o comentário existe.
+ *
+ *  Se correu tudo bem retorna o status 200.
+ *
+ *  Se ocorreu algum erro no processo retorna o status 400.
+ *
+ */
 export class DeleteCommentController {
   async handle(req: Request, res: Response) {
     const { id } = req.body;
@@ -18,7 +28,9 @@ export class DeleteCommentController {
         sucess: "Comentário excluído com sucesso!",
       });
     } catch (error) {
-      return res.status(400).send({ error: "A exclusão do comentário falhou!" });
+      return res
+        .status(400)
+        .send({ error: "A exclusão do comentário falhou!" });
     }
   }
 }
