@@ -9,7 +9,7 @@ export const prisma = new PrismaClient();
  *
  *  Antes de listar todos os comentários, ela testa se os comentários existem.
  *
- *  Se correu tudo bem retorna o comentario e o status 200.
+ *  Se correu tudo bem retorna todos os comentários e o status 200.
  *
  *  Se ocorreu algum erro no processo retorna status 400.
  *
