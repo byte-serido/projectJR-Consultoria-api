@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { PrismaClient} from "@prisma/client"
 import { generateToken } from "../../../config/generateToken";
 import { CreateUser } from "../../usercases/userUserCases/createUser";
+import { StatusCodes } from "http-status-codes";
 
 
 export const prisma = new PrismaClient;
@@ -12,7 +13,7 @@ export class CreateUserController{
         try{
              //Verificando se o usuário já existe
             if(await prisma.user.findUnique({where:{email:email}})){
-                return res.status(400).send({error:"User already exists!"})
+                return res.status(StatusCodes.UNAUTHORIZED).send({error:"User already exists!"})
             }
 
             // Criando Usuario
@@ -28,7 +29,7 @@ export class CreateUserController{
             },);
             
         }catch (err){
-            return res.status(400).send({error:"Registration failed"});
+            return res.status(StatusCodes.BAD_REQUEST).send({error:"Registration failed"});
         }
     };
 }
