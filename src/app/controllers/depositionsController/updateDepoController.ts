@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 import { UpdateDepo } from "../../usercases/depositionsUserCases/updateDepo";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
@@ -20,17 +21,17 @@ export class UpdateDepos {
                     id, name, testimony, office, company, imgUrl
                 });
 
-                if (name == 0 || testimony == 0 || company == 0) {
-                    return res.status(410).send({ Error: "O Depoimento deve conter: Autor, Descrição e Empresa como obrigatório." })
+                if (!name || !testimony || !company ) {
+                    return res.status(StatusCodes.UNAUTHORIZED).send({ Error: "O Depoimento deve conter: Autor, Descrição e Empresa como obrigatório." })
                 }
 
-                return res.status(201).send({
+                return res.status(StatusCodes.CREATED).send({
                     Sucess: "Depoiemnto Atualizado, obrigado!"
                 })
             }
 
         } catch (error) {
-            return res.status(400).send({ error: "Erro ao cadastrar depoimento." });
+            return res.status(StatusCodes.NOT_FOUND).send({ error: "Erro ao cadastrar depoimento." });
         }
     }
 }

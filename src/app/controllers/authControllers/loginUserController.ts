@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient} from "@prisma/client"
 import { generateToken } from "../../../config/generateToken";
+import { StatusCodes } from "http-status-codes";
 export const prisma = new PrismaClient;
 const bcrypt = require("bcryptjs");
 
@@ -11,16 +12,16 @@ export class LoginUserController{
         
         //confirmando se o username existe
         if(!user)
-            return res.status(401).send({error:"User not found"});
+            return res.status(StatusCodes.BAD_REQUEST).send({error:"User not found"});
 
         //comparando as senhas
         if(!await bcrypt.compare(password, user.password))
-            return res.status(400).send({error:"Invalid password"});
+            return res.status(StatusCodes.BAD_REQUEST).send({error:"Invalid password"});
         
         //Deixando senha vazia pra ninguem ver
         user.password = "";
 
-        return res.status(201).send({ 
+        return res.status(StatusCodes.OK).send({ 
             user, 
             token: generateToken({id: user.id})
         });

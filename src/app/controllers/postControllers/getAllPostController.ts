@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { GetAllPost } from "../../usercases/postUserCases/getAllPost";
 import { PrismaClient } from "@prisma/client";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
@@ -12,14 +13,14 @@ export class GetAllPostController {
             const getAllPost = new GetAllPost();
             const result = await getAllPost.execute()
 
-            if (result.length == 0) {
-                return res.status(407).send({ error: "Nenhum post criado" })
+            if (!result) {
+                return res.status(StatusCodes.BAD_REQUEST).send({ error: "Nenhum post criado" })
             }
 
-            return res.status(201).json(result);
+            return res.status(StatusCodes.OK).json(result);
 
         } catch (err) {
-            return res.status(400).send({error: "Erro na amostragem de post"})
+            return res.status(StatusCodes.BAD_REQUEST).send({error: "Erro na amostragem de post"})
         }
     }
 }

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient, Post } from "@prisma/client";
 import { CreateComment } from "../../usercases/commentUserCases/createComment";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
@@ -10,19 +11,19 @@ export class CreateCommentController {
 
     try {
       if (!(await prisma.post.findUnique({ where: { id: posts } }))) {
-        return res.status(400).send({ erro: "A postagem não existe!" });
+        return res.status(StatusCodes.BAD_REQUEST).send({ erro: "A postagem não existe!" });
       }
 
       if (!text && !authorName) {
         return res
-          .status(400)
+          .status(StatusCodes.UNAUTHORIZED)
           .send({ erro: "Insira um comentário de texto e autor" });
       }
       if (!text) {
-        return res.status(400).send({ erro: "Insira um comentário do texto!" });
+        return res.status(StatusCodes.UNAUTHORIZED).send({ erro: "Insira um comentário do texto!" });
       }
       if (!authorName) {
-        return res.status(400).send({ erro: "Insira o nome do autor!" });
+        return res.status(StatusCodes.UNAUTHORIZED).send({ erro: "Insira o nome do autor!" });
       }
 
       const create = new CreateComment();
@@ -32,11 +33,11 @@ export class CreateCommentController {
         posts,
       });
 
-      return res.status(200).send({
+      return res.status(StatusCodes.CREATED).send({
         comment,
       });
     } catch (error) {
-      return res.status(400).send({ error: "Não foi possivel realizar comentário!" });
+      return res.status(StatusCodes.BAD_REQUEST).send({ error: "Não foi possivel realizar comentário!" });
     }
   }
 }
