@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { DeleteComment } from "../../usercases/commentUserCases/deleteComment";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
@@ -19,18 +20,22 @@ export class DeleteCommentController {
     const { id } = req.body;
     try {
       if (!(await prisma.comment.findUnique({ where: { id: id } }))) {
-        return res.status(400).send({ error: "Comando não encontrado!" });
+        return res.status(StatusCodes.UNAUTHORIZED).send({ error: "Comentário não encontrado!" });
       }
       const delComment = new DeleteComment();
       await delComment.execute({ id });
 
-      return res.status(200).send({
+      return res.status(StatusCodes.CREATED).send({
         sucess: "Comentário excluído com sucesso!",
       });
     } catch (error) {
+<<<<<<< HEAD
       return res
         .status(400)
         .send({ error: "A exclusão do comentário falhou!" });
+=======
+      return res.status(StatusCodes.BAD_REQUEST).send({ error: "A exclusão do comentário falhou!" });
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

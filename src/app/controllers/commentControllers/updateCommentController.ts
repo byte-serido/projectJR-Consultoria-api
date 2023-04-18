@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { UpdateComment } from "../../usercases/commentUserCases/updateComment";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
@@ -21,18 +22,18 @@ export class UpdateCommentController {
 
     try {
       if (!(await prisma.comment.findUnique({ where: { id: id } }))) {
-        return res.status(400).send({ error: "Comando não encontrado!" });
+        return res.status(StatusCodes.UNAUTHORIZED).send({ error: "Comentário não encontrado!" });
       }
       if (!text && !authorName) {
         return res
-          .status(400)
+          .status(StatusCodes.UNAUTHORIZED)
           .send({ erro: "Insira um comentário de texto e o nome do autor!" });
       }
       if (!text) {
-        return res.status(400).send({ erro: "Insira um comentário do texto!" });
+        return res.status(StatusCodes.UNAUTHORIZED).send({ erro: "Insira um comentário do texto!" });
       }
       if (!authorName) {
-        return res.status(400).send({ erro: "Insira um nome do autor!" });
+        return res.status(StatusCodes.UNAUTHORIZED).send({ erro: "Insira um nome do autor!" });
       }
 
       const update = new UpdateComment();
@@ -44,6 +45,7 @@ export class UpdateCommentController {
       });
 
       return res
+<<<<<<< HEAD
         .status(200)
         .send({
           comment,
@@ -53,6 +55,12 @@ export class UpdateCommentController {
       return res
         .status(400)
         .send({ error: "A atualização do comentário falhou!" });
+=======
+        .status(StatusCodes.CREATED)
+        .send({ comment, sucess: "Atualização de comentário realizada com sucesso!" });
+    } catch (error) {
+      return res.status(StatusCodes.BAD_REQUEST).send({ error: "A atualização do comentário falhou!" });
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

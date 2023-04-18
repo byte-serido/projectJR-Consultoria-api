@@ -36,6 +36,7 @@ export class UpdateMemberController {
           imgUrl,
         });
 
+<<<<<<< HEAD
         return res
           .status(StatusCodes.CREATED)
           .send({ sucess: "O membro foi alterado com sucesso!" });
@@ -50,4 +51,14 @@ export class UpdateMemberController {
         .send({ error: "Falha na atualização de Membro" });
     }
   }
+=======
+                return res.status(StatusCodes.CREATED).send({sucess:"O membro foi alterado com sucesso!"});
+            }
+            
+            return res.status(StatusCodes.UNAUTHORIZED).send({error:"Este Membro não existe"});
+        } catch(err){
+            return res.status(StatusCodes.BAD_REQUEST).send({error:"Falha na atualização de Membro"});
+        }
+    };
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
 }

@@ -40,10 +40,40 @@ export class UpdatePost {
           imgUrl,
         });
 
+<<<<<<< HEAD
         if (!title) {
           return res.status(StatusCodes.UNAUTHORIZED).send({
             error: "O post deve ter titulo",
           });
+=======
+        try {
+
+            if (await prisma.post.findMany({
+                where: {
+                    id: id,
+                }
+
+            })) {
+
+                const UpdatePost = new UpadatePost();
+                await UpdatePost.execute({
+                    id, title, description, autor, imgUrl
+                });
+
+                if (!title) {
+                    return res.status(StatusCodes.UNAUTHORIZED).send({
+                        error: "O post deve ter titulo"
+                    });
+                }
+
+                return res.status(StatusCodes.CREATED).send({ sucess: "Post foi atualizado com sucesso!" })
+
+            }
+            
+        } catch (error) {
+            return res.status(StatusCodes.BAD_REQUEST).send({error: "Erro na atualização da postagem"}
+            );
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
         }
 
         return res

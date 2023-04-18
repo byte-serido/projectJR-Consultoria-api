@@ -1,7 +1,11 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { CreateContact } from "../../usercases/contactUserCases/createContact";
+<<<<<<< HEAD
 import { StatusCodes } from "http-status-codes";
+=======
+import {StatusCodes} from "http-status-codes"
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
 
 export const prisma = new PrismaClient();
 
@@ -24,9 +28,13 @@ export class CreateContactController {
 
     try {
       if (await prisma.contact.findUnique({ where: { email: email } })) {
+<<<<<<< HEAD
         return res
           .status(StatusCodes.UNAUTHORIZED)
           .send({ erro: "O contato já existe!" });
+=======
+        return res.status(StatusCodes.UNAUTHORIZED).send({ erro: "O contato já existe!" });
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
       }
 
       const create = new CreateContact();
@@ -42,9 +50,13 @@ export class CreateContactController {
         contact,
       });
     } catch (error) {
+<<<<<<< HEAD
       return res
         .status(StatusCodes.NOT_FOUND)
         .send({ error: "Erro na criação do contato!" });
+=======
+      return res.status(StatusCodes.NOT_FOUND).send({ error: "Erro na criação do contato!" });
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

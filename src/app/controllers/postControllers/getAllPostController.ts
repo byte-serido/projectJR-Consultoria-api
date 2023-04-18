@@ -30,11 +30,26 @@ export class GetAllPostController {
           .send({ error: "Nenhum post criado" });
       }
 
+<<<<<<< HEAD
       return res.status(StatusCodes.OK).json(result);
     } catch (err) {
       return res
         .status(StatusCodes.BAD_REQUEST)
         .send({ error: "Erro na amostragem de post" });
+=======
+            const getAllPost = new GetAllPost();
+            const result = await getAllPost.execute()
+
+            if (!result) {
+                return res.status(StatusCodes.BAD_REQUEST).send({ error: "Nenhum post criado" })
+            }
+
+            return res.status(StatusCodes.OK).json(result);
+
+        } catch (err) {
+            return res.status(StatusCodes.BAD_REQUEST).send({error: "Erro na amostragem de post"})
+        }
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { GetAllComments } from "../../usercases/commentUserCases/getAllComments";
+import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
@@ -21,12 +22,12 @@ export class GetAllCommentsController {
       const result = await getAllComments.execute();
 
       if (!result) {
-        return res.status(400).send({ error: "Comentario não existe!" });
+        return res.status(StatusCodes.BAD_REQUEST).send({ error: "Comentario não existe!" });
       }
 
-      return res.status(200).json(result);
+      return res.status(StatusCodes.OK).json(result);
     } catch (error) {
-      return res.status(400).send({ error: "Falha nos comentários." });
+      return res.status(StatusCodes.BAD_REQUEST).send({ error: "Falha nos comentários." });
     }
   }
 }

@@ -27,6 +27,7 @@ export class DeleteDepoController {
         },
       });
 
+<<<<<<< HEAD
       return res.status(StatusCodes.CREATED).send({
         sucess: "Depoimento Apagado com Sucesso!",
       });
@@ -34,6 +35,25 @@ export class DeleteDepoController {
       return res.status(StatusCodes.NOT_FOUND).send({
         error: "Não foi possível apagar o depoimento!",
       });
+=======
+            const { id } = req.body;
+
+            await prisma.deposition.delete({
+                where: {
+                    id: id,
+                },
+            },);
+
+            return res.status(StatusCodes.CREATED).send({
+                sucess: "Depoimento Apagado com Sucesso!"
+            });
+
+        } catch (error) {
+            return res.status(StatusCodes.NOT_FOUND).send({
+                error: "Não foi possível apagar o depoimento!"
+            });
+        }
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

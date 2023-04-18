@@ -24,12 +24,20 @@ export class CreateDepoController {
   async handle(req: Request, res: Response) {
     const { name, testimony, office, company, imgUrl } = req.body;
 
+<<<<<<< HEAD
     try {
       if (!name || !testimony || !company) {
         return res
           .status(StatusCodes.UNAUTHORIZED)
           .send({ error: "Preencha as informações vazias" });
       }
+=======
+        try {
+            
+            if (!name || !testimony || !company) {
+                return res.status(StatusCodes.UNAUTHORIZED).send({error: "Preencha as informações vazias"})
+            }
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
 
       const create = new CreateDepo();
       const depo = await create.execute({
@@ -40,11 +48,21 @@ export class CreateDepoController {
         imgUrl,
       });
 
+<<<<<<< HEAD
       return res.status(StatusCodes.CREATED).send({
         depo,
       });
     } catch (error) {
       return res.status(StatusCodes.NOT_FOUND).send(error);
+=======
+            return res.status(StatusCodes.CREATED).send({
+                depo
+            },);
+
+        } catch (error) {
+            return res.status(StatusCodes.NOT_FOUND).send(error)
+        }
+>>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }
