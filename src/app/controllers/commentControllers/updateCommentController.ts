@@ -45,7 +45,6 @@ export class UpdateCommentController {
       });
 
       return res
-<<<<<<< HEAD
         .status(200)
         .send({
           comment,
@@ -55,12 +54,6 @@ export class UpdateCommentController {
       return res
         .status(400)
         .send({ error: "A atualização do comentário falhou!" });
-=======
-        .status(StatusCodes.CREATED)
-        .send({ comment, sucess: "Atualização de comentário realizada com sucesso!" });
-    } catch (error) {
-      return res.status(StatusCodes.BAD_REQUEST).send({ error: "A atualização do comentário falhou!" });
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

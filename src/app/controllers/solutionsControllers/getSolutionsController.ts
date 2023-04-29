@@ -27,23 +27,11 @@ export class GetAllSolutionController {
           .send({ error: "Nenhuma solução cadastrada!" });
       }
 
-<<<<<<< HEAD
       return res.status(StatusCodes.OK).json(result);
     } catch (err) {
       return res
         .status(StatusCodes.BAD_REQUEST)
         .send({ error: "Erro na busca por soluções" });
-=======
-            if (!result) {
-                return res.status(StatusCodes.PAYMENT_REQUIRED).send({ error: "Nenhuma solução cadastrada!" });
-            }
-
-            return res.status(StatusCodes.OK).json(result);
-
-        } catch (err) {
-            return res.status(StatusCodes.BAD_REQUEST).send({ error: "Erro na busca por soluções" });
-        }
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

@@ -33,7 +33,6 @@ export class DeletePost {
         },
       });
 
-<<<<<<< HEAD
       return res.status(StatusCodes.CREATED).send({
         sucess: "Post foi apagado com sucesso!",
       });
@@ -41,27 +40,6 @@ export class DeletePost {
       return res
         .status(StatusCodes.BAD_REQUEST)
         .send({ error: "Não foi possível apagar esse post." });
-=======
-            await prisma.comment.deleteMany({
-                where: {
-                    posts: id,
-                },
-            },);
-
-            await prisma.post.delete({
-                where: {
-                    id: id
-                }
-            },);
-
-            return res.status(StatusCodes.CREATED).send({
-                sucess: "Post foi apagado com sucesso!"
-            });
-
-        } catch (error) {
-            return res.status(StatusCodes.BAD_REQUEST).send({ error: "Não foi possível apagar esse post." });
-        }
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

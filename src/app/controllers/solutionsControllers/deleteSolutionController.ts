@@ -21,7 +21,6 @@ export class DeleteSolutionController {
       const { id } = req.body;
       await prisma.solution.delete({ where: { id: id } });
 
-<<<<<<< HEAD
       return res
         .status(StatusCodes.CREATED)
         .send({ success: "Solução apagada com sucesso!" });
@@ -35,17 +34,3 @@ export class DeleteSolutionController {
     }
   }
 }
-=======
-        try {
-            const { id } = req.body;
-            await prisma.solution.delete({ where: { id: id } });
-
-            return res.status(StatusCodes.CREATED).send({ success: "Solução apagada com sucesso!" });
-
-        } catch (err) {
-            return res.status(StatusCodes.BAD_REQUEST).send({ error: "A Exclusão Falhou, por favor tente novamente em alguns minutos!" });
-        }
-
-    };
-}
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d

@@ -24,64 +24,28 @@ export class UpdateDepos {
     const { id, name, testimony, office, company, imgUrl } = req.body;
 
     try {
-      if (
-        await prisma.deposition.findMany({
+      
+      if (await prisma.deposition.findMany({
           where: {
-            id: id,
-          },
-        })
-      ) {
-        const updateDepo = new UpdateDepo();
-        await updateDepo.execute({
-          id,
-          name,
-          testimony,
-          office,
-          company,
-          imgUrl,
-        });
+              id: id,
+          }
+      })) {
+          const updateDepo = new UpdateDepo();
+          await updateDepo.execute({
+              id, name, testimony, office, company, imgUrl
+          });
 
-<<<<<<< HEAD
-        if (!name || !testimony || !company) {
-          return res
-            .status(StatusCodes.UNAUTHORIZED)
-            .send({
-              Error:
-                "O Depoimento deve conter: Autor, Descrição e Empresa como obrigatório.",
-            });
-=======
-            if (await prisma.deposition.findMany({
-                where: {
-                    id: id,
-                }
-            })) {
-                const updateDepo = new UpdateDepo();
-                await updateDepo.execute({
-                    id, name, testimony, office, company, imgUrl
-                });
+          if (!name || !testimony || !company ) {
+              return res.status(StatusCodes.UNAUTHORIZED).send({ Error: "O Depoimento deve conter: Autor, Descrição e Empresa como obrigatório." })
+          }
 
-                if (!name || !testimony || !company ) {
-                    return res.status(StatusCodes.UNAUTHORIZED).send({ Error: "O Depoimento deve conter: Autor, Descrição e Empresa como obrigatório." })
-                }
-
-                return res.status(StatusCodes.CREATED).send({
-                    Sucess: "Depoiemnto Atualizado, obrigado!"
-                })
-            }
-
-        } catch (error) {
-            return res.status(StatusCodes.NOT_FOUND).send({ error: "Erro ao cadastrar depoimento." });
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
-        }
-
-        return res.status(StatusCodes.CREATED).send({
-          Sucess: "Depoiemnto Atualizado, obrigado!",
-        });
+          return res.status(StatusCodes.CREATED).send({
+              Sucess: "Depoiemnto Atualizado, obrigado!"
+          })
       }
+
     } catch (error) {
-      return res
-        .status(StatusCodes.NOT_FOUND)
-        .send({ error: "Erro ao cadastrar depoimento." });
+        return res.status(StatusCodes.NOT_FOUND).send({ error: "Erro ao cadastrar depoimento." });
     }
   }
 }

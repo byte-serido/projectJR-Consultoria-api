@@ -30,7 +30,6 @@ export class CreateSolutionController {
           .send({ error: "A Solução Já Existe" });
       }
 
-<<<<<<< HEAD
       if (!name) {
         return res
           .status(StatusCodes.UNAUTHORIZED)
@@ -50,26 +49,3 @@ export class CreateSolutionController {
     }
   }
 }
-=======
-        try {
-            if (await prisma.solution.findUnique({ where: { name: name } })) {
-                return res.status(StatusCodes.UNAUTHORIZED).send({ error: "A Solução Já Existe" })
-            }
-
-            if (!name) {
-                return res.status(StatusCodes.UNAUTHORIZED).send({ error: "Por favor adicione um nome na solução" })
-            }
-
-            const create = new CreateSolution();
-            const solution = await create.execute({ name, description, imgUrl });
-
-            return res.send({
-                solution
-            },);
-
-        } catch (err) {
-            return res.status(StatusCodes.BAD_REQUEST).send({ error: "O Cadastro Falhou" });
-        }
-    };
-}
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d

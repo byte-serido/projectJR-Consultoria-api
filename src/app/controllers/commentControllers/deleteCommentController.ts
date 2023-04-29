@@ -29,13 +29,9 @@ export class DeleteCommentController {
         sucess: "Comentário excluído com sucesso!",
       });
     } catch (error) {
-<<<<<<< HEAD
       return res
         .status(400)
         .send({ error: "A exclusão do comentário falhou!" });
-=======
-      return res.status(StatusCodes.BAD_REQUEST).send({ error: "A exclusão do comentário falhou!" });
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

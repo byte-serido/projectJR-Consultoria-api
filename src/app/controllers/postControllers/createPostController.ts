@@ -35,7 +35,6 @@ export class CreatePostController {
           .send({ error: "Já existe um post com esse nome." });
       }
 
-<<<<<<< HEAD
       if (!title || !autor) {
         return res.status(StatusCodes.UNAUTHORIZED).send({
           error: "O post precisa obrigatoriamente de titulo e autor.",
@@ -57,31 +56,6 @@ export class CreatePostController {
       return res
         .status(StatusCodes.BAD_REQUEST)
         .send({ error: "O Post não foi criado." });
-=======
-            if (await prisma.post.findUnique({
-                where: { title: title }
-            })) {
-                return res.status(StatusCodes.UNAUTHORIZED).send({ error: "Já existe um post com esse nome." })
-            }
-
-            if (!title || !autor) {
-                return res.status(StatusCodes.UNAUTHORIZED).send({
-                    error: "O post precisa obrigatoriamente de titulo e autor."
-                })
-            }
-
-            const create = new CreatePost();
-            const post = await create.execute({
-                title, description, autor, imgUrl
-            });
-
-            return res.status(StatusCodes.CREATED).send({
-                post
-            },);
-        } catch (err) {
-            return res.status(StatusCodes.BAD_REQUEST).send({ error: "O Post não foi criado." })
-        }
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

@@ -1,11 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { DeleteContact } from "../../usercases/contactUserCases/deleteContact";
-<<<<<<< HEAD
-import { StatusCodes } from "http-status-codes";
-=======
 import {StatusCodes} from "http-status-codes"
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
 
 export const prisma = new PrismaClient();
 

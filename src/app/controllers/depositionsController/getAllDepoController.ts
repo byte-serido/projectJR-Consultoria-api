@@ -21,37 +21,20 @@ export const prisma = new PrismaClient();
 export class GelAllDepoController {
   async handle(req: Request, res: Response) {
     try {
+      
       const getAllDepo = new GetAllDepo();
-      const result = await getAllDepo.execute();
+      const result = await getAllDepo.execute()
 
       if (!result) {
-        return res
-          .status(StatusCodes.PAYMENT_REQUIRED)
-          .send({ error: "Nenhum depoimento cadastrado" });
+        return res.status(StatusCodes.PAYMENT_REQUIRED).send({ error: "Nenhum depoimento cadastrado" })
       }
 
-<<<<<<< HEAD
       return res.status(StatusCodes.OK).json(result);
+
     } catch (error) {
-      return res.status(StatusCodes.NOT_FOUND).send({
-        error: "Erro na busca por depoimentos,",
-      });
-=======
-            const getAllDepo = new GetAllDepo();
-            const result = await getAllDepo.execute()
-
-            if (!result) {
-                return res.status(StatusCodes.PAYMENT_REQUIRED).send({ error: "Nenhum depoimento cadastrado" })
-            }
-
-            return res.status(StatusCodes.OK).json(result);
-
-        } catch (error) {
-            return res.status(StatusCodes.NOT_FOUND).send({
-                error: "Erro na busca por depoimentos,"
-            })
-        }
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
+        return res.status(StatusCodes.NOT_FOUND).send({
+        error: "Erro na busca por depoimentos,"
+      })
     }
   }
 }

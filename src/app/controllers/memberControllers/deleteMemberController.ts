@@ -28,7 +28,6 @@ export class DeletMemberController {
       }
       const { id } = req.body;
 
-<<<<<<< HEAD
       const delMember = await prisma.member.delete({
         where: {
           id: id,
@@ -42,24 +41,4 @@ export class DeletMemberController {
         .send({ error: "Falha na exclusão de Membro" });
     }
   }
-=======
-            if(!req.body.id){
-                return res.status(StatusCodes.BAD_REQUEST).send({error:"Falha na exclusão de Membro"})
-            }
-            const {id} = req.body;
-            
-            const delMember = await prisma.member.delete({
-                where:{
-                    id:id,
-                },
-            });
-
-
-            return res.status(StatusCodes.CREATED).send("Sucesso");
-        } catch(err){
-            return res.status(StatusCodes.NOT_FOUND).send({error:"Falha na exclusão de Membro"});
-        }
-        
-    };
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
 }

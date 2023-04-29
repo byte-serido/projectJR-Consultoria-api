@@ -48,13 +48,9 @@ export class CreateCommentController {
         comment,
       });
     } catch (error) {
-<<<<<<< HEAD
       return res
         .status(400)
         .send({ error: "Não foi possivel realizar comentário!" });
-=======
-      return res.status(StatusCodes.BAD_REQUEST).send({ error: "Não foi possivel realizar comentário!" });
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
     }
   }
 }

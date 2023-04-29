@@ -5,7 +5,6 @@ import { StatusCodes } from "http-status-codes";
 
 export const prisma = new PrismaClient();
 
-<<<<<<< HEAD
 /**
  *  Essa é a classe controller do CreateCMember
  *
@@ -53,24 +52,4 @@ export class CreateMemberController {
         .send({ error: "Falha no Registro de membro" });
     }
   }
-=======
-export class CreateMemberController{
-    async handle(req: Request, res: Response){
-        const {name,registration,number,role,description,imgUrl} = req.body;
-        try{
-            if(await prisma.member.findUnique({where:{registration:registration}})){
-                return res.status(StatusCodes.UNAUTHORIZED).send({error:"Membro já existente"})
-            }
-
-            const create = new CreateMember();
-            const member = await create.execute({name,registration,number,role,description,imgUrl});
-        
-            return res.send({
-                member,
-            },);
-        } catch(err){
-            return res.status(StatusCodes.NOT_FOUND).send({error:"Falha no Registro de membro"});
-        }
-    };
->>>>>>> 3bdc902bcb87c8289c49b418db66dc40f5a0359d
 }
