@@ -27,7 +27,7 @@ export class GetOneMemberController {
           .status(StatusCodes.BAD_REQUEST)
           .send({ error: "Falta de dados!" });
       }
-      const { id } = req.params;
+      const id = req.params.id;
 
       const member = await prisma.member.findUnique({
         where: {
