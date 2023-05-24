@@ -14,7 +14,7 @@ const memberRoutes = Router();
 
 memberRoutes.post("/create",createMemberController.handle);
 memberRoutes.get("/getall",getMembersController.handle);
-memberRoutes.get("/getone",getOneMemberController.handle);
+memberRoutes.get("/getone:id",getOneMemberController.handle);
 memberRoutes.put("/update",updateMemberController.handle);
 memberRoutes.delete("/delete",deletMemberController.handle);
 
