@@ -21,12 +21,12 @@ export const prisma = new PrismaClient();
 export class GetOneMemberController {
   async handle(req: Request, res: Response) {
     try {
-      if (!req.body.id) {
+      if (!req.params.id) {
         return res
           .status(StatusCodes.BAD_REQUEST)
           .send({ error: "Falha na requisição!" });
       }
-      const { id } = req.body;
+      const { id } = req.params;
 
       const member = await prisma.member.findUnique({
         where: {
