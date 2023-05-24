@@ -22,12 +22,12 @@ export class GetOneMemberController {
   async handle(req: Request, res: Response) {
     try {
       //?id=7714edfd-5d9c-4cc4-b9f4-17adb9ce414f
-      if (!req.params) {
+      if (!req.params.id) {
         return res
           .status(StatusCodes.BAD_REQUEST)
           .send({ error: "Falta de dados!" });
       }
-      const id = req.params.id;
+      const { id } = req.params;
 
       const member = await prisma.member.findUnique({
         where: {
