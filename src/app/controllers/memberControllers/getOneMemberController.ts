@@ -35,11 +35,15 @@ export class GetOneMemberController {
         },
       });
 
+      if (!member) {
+        return res.status(StatusCodes.BAD_REQUEST).send({ error: "Membro não existe!" });
+      }
+
       return res.status(StatusCodes.OK).json(member);
     } catch (err) {
       return res
         .status(StatusCodes.NOT_FOUND)
-        .send({ error: "Nenhum membro encontrado!" });
+        .send({ error: "Erro!" });
     }
   }
 }
