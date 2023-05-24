@@ -22,10 +22,10 @@ export class GetOneMemberController {
   async handle(req: Request, res: Response) {
     try {
       //?id=7714edfd-5d9c-4cc4-b9f4-17adb9ce414f
-      if (!req.params) {
+      if (!req.params.id) {
         return res
           .status(StatusCodes.BAD_REQUEST)
-          .send({ error: "Falha na requisição!" });
+          .send({ error: "Falta de dados!" });
       }
       const { id } = req.params;
 
@@ -43,7 +43,7 @@ export class GetOneMemberController {
     } catch (err) {
       return res
         .status(StatusCodes.NOT_FOUND)
-        .send({ error: "Erro!" });
+        .send({ error: "Bad request" });
     }
   }
 }
