@@ -35,7 +35,7 @@ async function forgotPassword(req: Request, res: Response) {
     mailer.sendMail(
       {
         to: email,
-        from: "Flavio Softs ltda. <softsflavio@gmail.com>",
+        from: "Recuperar email <Recuperar email>",
         subject: "Recuperar email",
         template: "auth/forgot_password",
         context: { token },
