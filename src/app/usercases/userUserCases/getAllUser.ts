@@ -14,8 +14,6 @@ export class GetUsers {
         password: true,
         created_at: true,
         updated_at: true,
-        token: true,
-        expires: true,
       },
     });
 
