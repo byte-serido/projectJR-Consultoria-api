@@ -16,8 +16,10 @@ model User{
   password String 
   name String 
   mod String
+  token String @unique
+  expires DateTime
   created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  updated_at DateTime @updatedAt   
 
   @@map("users")
 }
