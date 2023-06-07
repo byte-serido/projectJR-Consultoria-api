@@ -21,14 +21,7 @@ export const prisma = new PrismaClient();
 export class GetOneMemberController {
   async handle(req: Request, res: Response) {
     try {
-      //?id=7714edfd-5d9c-4cc4-b9f4-17adb9ce414f
-      if (!req.params.id) {
-        return res
-          .status(StatusCodes.BAD_REQUEST)
-          .send({ error: "Falta de dados!" });
-      }
       const { id } = req.params;
-
       const member = await prisma.member.findUnique({
         where: {
           id: id,
@@ -36,14 +29,14 @@ export class GetOneMemberController {
       });
 
       if (!member) {
-        return res.status(StatusCodes.BAD_REQUEST).send({ error: "Membro não existe!" });
+        return res.status(StatusCodes.NOT_FOUND).send({ error: "Membro não existe!" });
       }
 
       return res.status(StatusCodes.OK).json(member);
     } catch (err) {
       return res
-        .status(StatusCodes.NOT_FOUND)
-        .send({ error: "Bad request" });
+        .status(StatusCodes.BAD_REQUEST)
+        .send({ error: "Erro ao buscar o membro!" });
     }
   }
 }
