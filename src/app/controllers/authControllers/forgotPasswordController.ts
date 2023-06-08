@@ -5,6 +5,14 @@ const mailer = require("../../../modules/mailer");
 import { PrismaClient } from "@prisma/client";
 export const prisma = new PrismaClient();
 
+/**
+ *  Essa é a classe controller Forgot Passaword
+ *
+ *  Ela envia email para o usuário com o token para
+ *  recuperar a senha.
+ *
+ */
+
 async function forgotPassword(req: Request, res: Response) {
   const { email } = req.body;
 
@@ -32,13 +40,16 @@ async function forgotPassword(req: Request, res: Response) {
       },
     });
 
+    // o envio de email com token
     mailer.sendMail(
       {
         to: email,
-        from: "Recuperar email <Recuperar email>",
-        subject: "Recuperar email",
+        from: "Recuperar Senha <softsflavio@gmail.com>",
+        subject: "Recuperar Senha",
         template: "auth/forgot_password",
         context: { token },
+        html: `<p>Recupere sua senha com este token: </p><br>
+              <h1>${token}</h1>`,
       },
       (err: any) => {
         if (err) {
@@ -48,11 +59,11 @@ async function forgotPassword(req: Request, res: Response) {
             .send({ error: "Não pode enviar o email de forgot password" });
         }
 
-        return res.send();
+        return res.status(200).send({ menssage: "Email enviado com sucesso!" });
       }
     );
   } catch (error) {
-    res.status(400).send({ error: "Esso no forgot password, tente novamente" });
+    res.status(400).send({ error: "Erro no forgot password, tente novamente" });
   }
 }
 
