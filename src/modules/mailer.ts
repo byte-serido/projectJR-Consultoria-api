@@ -24,6 +24,15 @@ const handlebarOptions = {
   extName: ".html",
 };
 
+try {
+  transport.use("compile", hbs(handlebarOptions));
+} catch (error) {
+  // Lidar com a exceção aqui
+  console.error("Erro ao compilar o handlebars:", error);
+}
+
+module.exports = transport;
+
 transport.use("compile", hbs(handlebarOptions));
 
 module.exports = transport;
