@@ -1,9 +1,9 @@
-import { PrismaClient, User } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 export const prisma = new PrismaClient();
 
 export class GetUsers {
-  async execute(): Promise<User[]> {
+  async execute() {
     const listUsers = await prisma.user.findMany({
       select: {
         id: true,
