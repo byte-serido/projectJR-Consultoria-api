@@ -23,8 +23,9 @@ export const prisma = new PrismaClient();
  */
 export class GetOnePostController {
   async handle(req: Request, res: Response) {
+    const { id } = req.params;
+    console.log("id = ", id);
     try {
-      const { id } = req.params;
       const post = await prisma.post.findUnique({
         where: {
           id: id,
@@ -34,14 +35,14 @@ export class GetOnePostController {
       if (!post) {
         return res
           .status(StatusCodes.NOT_FOUND)
-          .send({ error: "Membro não existe!" });
+          .send({ error: "Post não existe!" });
       }
 
       return res.status(StatusCodes.OK).json(post);
     } catch (err) {
       return res
         .status(StatusCodes.BAD_REQUEST)
-        .send({ error: "Erro ao buscar o membro!" });
+        .send({ error: "Erro ao buscar o post!" });
     }
   }
 }

@@ -5,17 +5,17 @@ import { StatusCodes } from "http-status-codes";
 export const prisma = new PrismaClient();
 
 /**
- *  Essa é a classe controller do DeleteMember
+ *  Essa é a classe controller do getOneMember
  *
- *  Antes de deletar um membro, ela testa se o membro existe,
+ *  Ela retorna um membro, primeiro testa se o membro existe,
  *  se não existir retorna status:
- *  BAD_REQUEST = 400
+ *  NOT_FOUND = 404
  *
  *  Se correu tudo bem retorna status:
- *  CREATED = 201
+ *  OK = 200
  *
  *  Se ocorreu algum erro no processo retorna status:
- *  NOT_FOUND = 404
+ *  BAD_REQUEST = 400v
  *
  */
 export class GetOneMemberController {
@@ -29,7 +29,9 @@ export class GetOneMemberController {
       });
 
       if (!member) {
-        return res.status(StatusCodes.NOT_FOUND).send({ error: "Membro não existe!" });
+        return res
+          .status(StatusCodes.NOT_FOUND)
+          .send({ error: "Membro não existe!" });
       }
 
       return res.status(StatusCodes.OK).json(member);
