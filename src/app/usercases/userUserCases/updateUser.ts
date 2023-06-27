@@ -20,9 +20,13 @@ export class UpdateUser {
     mod,
   }: typeUser): Promise<User> {
     //Criptografando a senha
+    // Criptografando a senha
     const bcrypt = require("bcryptjs");
-    const hash = await bcrypt.hash(password, 10);
-    password = hash;
+
+    if (password) {
+      const hash = await bcrypt.hash(password, 10);
+      password = hash;
+    }
 
     //update user
     const updatedContact = await prisma.user.update({
