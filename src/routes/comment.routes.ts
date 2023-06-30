@@ -17,6 +17,6 @@ commentRoutes.post("/create", createComment.handle);
 commentRoutes.get("/getall", getAllComments.handle);
 commentRoutes.put("/update", updateComment.handle);
 commentRoutes.delete("/delete", deleteComment.handle);
-commentRoutes.post("/getone:id", getOneComment.handle);
+commentRoutes.get("/getone:id", getOneComment.handle);
 
 export { commentRoutes };
