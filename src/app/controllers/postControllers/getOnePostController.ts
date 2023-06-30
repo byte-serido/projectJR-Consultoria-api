@@ -23,12 +23,29 @@ export const prisma = new PrismaClient();
  */
 export class GetOnePostController {
   async handle(req: Request, res: Response) {
-    const { id } = req.params;
-    console.log("id = ", id);
     try {
+      const { id } = req.params;
       const post = await prisma.post.findUnique({
         where: {
           id: id,
+        },
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          autor: true,
+          imgUrl: true,
+          created_at: true,
+          updated_at: true,
+          iterationOnPost: {
+            select: {
+              id: true,
+              authorName: true,
+              text: true,
+              data_init: true,
+              data_up: true,
+            },
+          },
         },
       });
 
